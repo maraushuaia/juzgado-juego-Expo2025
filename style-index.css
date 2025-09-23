@@ -1,0 +1,51 @@
+/* Styles for the welcome page */
+/* Actualizo el fondo del index con un gradiente atractivo */
+body,
+html,
+#app {
+  height: 100%;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#start-screen {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 15px;
+  
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#start-screen h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+#start-screen p {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+#start-btn {
+  font-size: 1.5em;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #00ff6a;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#start-btn:hover {
+  background-color: #04a748;
+}

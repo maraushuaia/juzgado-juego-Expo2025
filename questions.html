@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ushuaia Ciudad Segura - Preguntas</title>
+    <link rel="stylesheet" href="style-questions.css" />
+  </head>
+  <body>
+    <div id="game-screen" class="screen active">
+      <div class="container">
+        <div class="question" id="question-text"></div>
+        <div class="image">
+          <img
+            id="question-image"
+            src="assets/images/pregunta1.jpeg"
+            alt="Imagen de la pregunta"
+            style="max-width: 100%; height: auto"
+          />
+        </div>
+        <div class="answers" id="options-container"></div>
+      </div>
+
+      <div id="feedback"></div>
+
+      <div id="question-timer-circle">
+        <div class="label">TIEMPO</div>
+        <span id="question-timer-circle-text">15</span>
+      </div>
+
+      <!-- Nuevo círculo para puntaje en esquina inferior izquierda -->
+      <div id="score-circle">
+        <div class="label">PUNTOS</div>
+        <div class="score-value" id="score">0</div>
+      </div>
+    </div>
+    <script src="script-questions.js"></script>
+  </body>
+</html>

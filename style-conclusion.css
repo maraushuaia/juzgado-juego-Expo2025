@@ -1,0 +1,44 @@
+/* Styles for the conclusion page */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#end-screen {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#end-screen h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+#final-score {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+#restart-btn {
+  font-size: 1.5em;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #218838;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restart-btn:hover {
+  background-color: #1e7e34;
+}

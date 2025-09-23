@@ -1,0 +1,513 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  overflow: hidden;
+}
+
+/* Pantallas */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  padding: 20px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Pantalla de inicio */
+#start-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#start-screen p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+/* Botones generales */
+button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Pantalla del juego */
+#game-screen {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Encabezado con temporizadores y puntaje */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 15px 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#main-timer,
+#question-timer,
+#score {
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+/* Time section with two columns */
+.time {
+  grid-area: time;
+  background: #f0f0f0;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.main-time,
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Circular question timer with pulse animation */
+#question-timer-circle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  z-index: 1000;
+  user-select: none;
+  cursor: default;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 123, 255, 1);
+  }
+}
+
+/* Feedback modal */
+.feedback {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+  min-width: 300px;
+  justify-content: center;
+}
+
+.feedback .icon {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* New grid layout for game screen container */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns for row 3 */
+  grid-template-rows: auto auto 1fr; /* Three rows */
+  grid-template-areas:
+    "time time"
+    "question question"
+    "image answers";
+  gap: 16px;
+  height: 100vh; /* Optional, to occupy full height */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.time {
+  grid-area: time;
+  background: #f0f0f0;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.question {
+  grid-area: question;
+  background: #fafafa;
+  padding: 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.image {
+  grid-area: image;
+  background: #ddd;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.answers {
+  grid-area: answers;
+  background: #eee;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.option-btn:hover {
+  background-color: #d0eaff;
+}
+
+.option-btn:active {
+  background-color: #a0c4ff;
+}
+
+#end-game-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff4c4c;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#end-game-btn:hover {
+  background-color: #ff1a1a;
+}
+
+#feedback {
+  margin-top: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "time"
+      "question"
+      "image"
+      "answers";
+    height: auto;
+  }
+}
+
+/* Contenedor de pregunta: dos filas
+   - fila 1: texto de la pregunta
+   - fila 2: contenido con dos columnas (izquierda: imagen + botón, derecha: opciones) */
+#question-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Texto de la pregunta (fila superior) */
+#question-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  align-self: center;
+}
+
+/* Fila de contenido con dos columnas */
+#content-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Columna izquierda: imagen y botón */
+#left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Imagen de la pregunta */
+#question-image {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón para terminar el juego o acción en la columna izquierda */
+#end-game-btn {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+#end-game-btn:hover {
+  background-color: #e04343;
+}
+
+/* Contenedor de opciones (columna derecha) */
+#options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Botones de opción */
+.option-btn {
+  background-color: #7fff00;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #7fff00;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.option-btn:hover {
+  background-color: #6ee600;
+}
+
+.option-btn:active {
+  background-color: #5ecc00;
+}
+
+.some-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+#question-text {
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#question-image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+}
+
+/* Contenedor de opciones */
+#options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Botones de opciones */
+.option-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.option-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.option-btn.correct {
+  background: #4caf50;
+  border-color: #45a049;
+}
+
+.option-btn.incorrect {
+  background: #f44336;
+  border-color: #d32f2f;
+}
+
+/* Botón Terminar Juego */
+.end-game-btn {
+  align-self: center;
+  background: #f44336;
+  padding: 12px 30px;
+}
+
+.end-game-btn:hover {
+  background: #d32f2f;
+}
+
+/* Feedback */
+.feedback {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feedback.show {
+  opacity: 1;
+}
+
+.feedback.correct {
+  background: rgba(76, 175, 80, 0.3);
+  color: #fff;
+}
+
+.feedback.incorrect {
+  background: rgba(244, 67, 54, 0.3);
+  color: #fff;
+}
+
+/* Pantalla final */
+#end-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#final-score {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #question-text {
+    font-size: 1.4rem;
+  }
+
+  .option-btn {
+    font-size: 1rem;
+    padding: 15px;
+  }
+}
