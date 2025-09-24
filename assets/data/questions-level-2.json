@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "question": "Si un amigo conduce una moto sin casco, ¿qué deberías hacer?",
+    "image": "assets/images/ados1.png",
+    "qr_code": "assets/images-qr/ados1.png",
+    "options": [
+      "Subirte igual, no importa",
+      "Explicarle que es peligroso e ilegal",
+      "Ignorarlo y grabarlo para redes",
+      "Convencerlo de manejar más despacio"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 2,
+    "question": "¿Qué consecuencias puede tener usar el celular mientras conduces?",
+    "image": "assets/images/ados2.png",
+    "qr_code": "assets/images-qr/ados2.png",
+    "options": [
+      "Ninguna, si manejas bien",
+      "Distraerte, generar accidentes y recibir sanciones",
+      "Solo que gastas batería",
+      "Divertirte mientras manejas"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 3,
+    "question": "Si participas en una fiesta con música muy fuerte de noche, ¿qué norma puedes estar incumpliendo?",
+    "image": "assets/images/ados3.png",
+    "qr_code": "assets/images-qr/ados3.png",
+    "options": [
+      "La de tránsito",
+      "La ordenanza de ruidos molestos",
+      "Los códigos de vestimenta",
+      "La ley de residuos"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 4,
+    "question": "¿Qué debes hacer si presencias un choque en la vía pública?",
+    "image": "assets/images/ados4.png",
+    "qr_code": "assets/images-qr/ados4.png",
+    "options": [
+      "Filmar para publicar en redes",
+      "Acudir a emergencias y dar aviso al 107",
+      "Seguir tu camino como si nada",
+      "Acercarte sin cuidado a los heridos"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 5,
+    "question": "¿Qué rol cumple el Juzgado de Faltas en tu ciudad?",
+    "image": "assets/images/ados5.png",
+    "qr_code": "assets/images-qr/ados5.png",
+    "options": [
+      "Aplicar sanciones por incumplimiento de normas",
+      "Repartir becas educativas",
+      "Organizar conciertos",
+      "Regalar equipamiento deportivo"
+    ],
+    "answer": 0
+  },
+  {
+    "id": 6,
+    "question": "Un conductor estaciona en una rampa para personas con movilidad reducida. ¿Qué falta comete?",
+    "image": "assets/images/ados6.png",
+    "qr_code": "assets/images-qr/ados6.png",
+    "options": [
+      "Ninguna, si es por poco tiempo",
+      "Una falta que puede ser sancionada",
+      "Un favor porque la rampa no se usa",
+      "Solo un descuido sin importancia"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 7,
+    "question": "¿Qué significa la luz roja en un semáforo?",
+    "image": "assets/images/ados7.png",
+    "qr_code": "assets/images-qr/ados7.png",
+    "options": [
+      "Precaución, puedes seguir",
+      "Alto total, no puedes avanzar",
+      "Avanza más rápido",
+      "Solo es para peatones"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 8,
+    "question": "¿Qué debes hacer si quieres conducir cuando todavía no tienes licencia?",
+    "image": "assets/images/ados8.png",
+    "qr_code": "assets/images-qr/ados8.png",
+    "options": [
+      "Practicar igual mientras aprendes",
+      "Esperar a obtener la licencia legalmente",
+      "Conducir solo en calles sin tráfico",
+      "Llamar a un amigo para que te preste el auto"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 9,
+    "question": "Si un inspector de tránsito te detiene, ¿qué debes hacer?",
+    "image": "assets/images/ados9.png",
+    "qr_code": "assets/images-qr/ados9.png",
+    "options": [
+      "Ignorarlo y seguir de largo",
+      "Detenerte y colaborar mostrando tu documentación",
+      "Discutir sin mostrar papeles",
+      "Acelerar para no perder tiempo"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 10,
+    "question": "¿Por qué es importante respetar las normas de tránsito?",
+    "image": "assets/images/ados10.png",
+    "qr_code": "assets/images-qr/ados10.png",
+    "options": [
+      "Para evitar multas solamente",
+      "Para garantizar la seguridad de todos",
+      "Porque es obligatorio sin razón",
+      "Para llegar más rápido"
+    ],
+    "answer": 1
+  }
+]

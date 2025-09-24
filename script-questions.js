@@ -1,13 +1,13 @@
-const questionText = document.getElementById("question-text");
-const questionImage = document.getElementById("question-image");
-const optionsContainer = document.getElementById("options-container");
-const scoreEl = document.getElementById("score");
-const feedbackEl = document.getElementById("feedback");
+const questionText = document.getElementById('question-text');
+const questionImage = document.getElementById('question-image');
+const optionsContainer = document.getElementById('options-container');
+const scoreEl = document.getElementById('score');
+const feedbackEl = document.getElementById('feedback');
 const questionTimerCircleText = document.getElementById(
-  "question-timer-circle-text"
+  'question-timer-circle-text'
 );
-const endGameBtn = document.getElementById("end-game-btn");
-const qrImage = document.getElementById("qr-image");
+const endGameBtn = document.getElementById('end-game-btn');
+const qrImage = document.getElementById('qr-image');
 
 let questions = [];
 let currentQuestionIndex = 0;
@@ -28,7 +28,7 @@ function showFeedbackCard(isCorrect, message, duration = 2000) {
   const crossSvg =
     '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-  const color = isCorrect ? "#28a745" : "#dc3545";
+  const color = isCorrect ? '#28a745' : '#dc3545';
   const cardHtml = `
     <div class="feedback-card" role="status" aria-live="polite" style="
     position: fixed;
@@ -59,18 +59,18 @@ function showFeedbackCard(isCorrect, message, duration = 2000) {
 
   if (duration > 0) {
     setTimeout(() => {
-      feedbackEl.innerHTML = "";
+      feedbackEl.innerHTML = '';
     }, duration);
   }
 }
 
 async function loadQuestions() {
   try {
-    const response = await fetch("assets/data/questions.json");
+    const response = await fetch('assets/data/questions-level-1.json');
     questions = await response.json();
   } catch (error) {
     console.error(error);
-    showFeedbackCard(false, "Error al cargar las preguntas.", 3000);
+    showFeedbackCard(false, 'Error al cargar las preguntas.', 3000);
   }
 }
 
@@ -97,7 +97,7 @@ function startQuestionTimer() {
     if (questionTimeLeft <= 0) {
       clearInterval(questionTimerInterval);
       acceptingAnswers = false;
-      showFeedbackCard(false, "Tiempo agotado!", 2500);
+      showFeedbackCard(false, 'Tiempo agotado!', 2500);
       setTimeout(() => {
         nextQuestion();
       }, 1500);
@@ -114,21 +114,21 @@ function loadQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   questionText.textContent = currentQuestion.question;
   questionImage.src = currentQuestion.image;
-  questionImage.alt = currentQuestion.alt || "Imagen de la pregunta";
+  questionImage.alt = currentQuestion.alt || 'Imagen de la pregunta';
 
   qrImage.src = currentQuestion.qr_code;
   qrImage.alt = `Código QR para la pregunta ${currentQuestion.id}`;
 
-  optionsContainer.innerHTML = "";
+  optionsContainer.innerHTML = '';
   currentQuestion.options.forEach((option, index) => {
-    const button = document.createElement("button");
-    button.classList.add("option-btn");
+    const button = document.createElement('button');
+    button.classList.add('option-btn');
     button.textContent = option;
-    button.addEventListener("click", () => selectAnswer(index));
+    button.addEventListener('click', () => selectAnswer(index));
     optionsContainer.appendChild(button);
   });
 
-  feedbackEl.innerHTML = "";
+  feedbackEl.innerHTML = '';
   acceptingAnswers = true;
 }
 
@@ -139,22 +139,22 @@ function selectAnswer(selectedIndex) {
   const currentQuestion = questions[currentQuestionIndex];
   const correctIndex = currentQuestion.answer;
 
-  const buttons = optionsContainer.querySelectorAll("button");
+  const buttons = optionsContainer.querySelectorAll('button');
   buttons.forEach((button, index) => {
     button.disabled = true;
     if (index === correctIndex) {
-      button.classList.add("correct");
+      button.classList.add('correct');
     } else if (index === selectedIndex) {
-      button.classList.add("incorrect");
+      button.classList.add('incorrect');
     }
   });
 
   if (selectedIndex === correctIndex) {
     score++;
     scoreEl.textContent = score;
-    showFeedbackCard(true, "¡Correcto!", 1500);
+    showFeedbackCard(true, '¡Correcto!', 1500);
   } else {
-    showFeedbackCard(false, "Incorrecto.", 6500);
+    showFeedbackCard(false, 'Incorrecto.', 6500);
   }
 
   clearInterval(questionTimerInterval);
@@ -177,23 +177,23 @@ function nextQuestion() {
 function endGame() {
   clearInterval(questionTimerInterval);
   acceptingAnswers = false;
-  localStorage.setItem("finalScore", score);
-  window.location.href = "conclusion.html";
+  localStorage.setItem('finalScore', score);
+  window.location.href = 'conclusion.html';
 }
 
-const questionTimerCircle = document.getElementById("question-timer-circle");
+const questionTimerCircle = document.getElementById('question-timer-circle');
 
-questionTimerCircle.addEventListener("click", () => {
+questionTimerCircle.addEventListener('click', () => {
   endGame();
 });
 
-questionTimerCircle.addEventListener("keypress", (event) => {
-  if (event.key === "Enter" || event.key === " ") {
+questionTimerCircle.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
     endGame();
   }
 });
 
-window.addEventListener("load", async () => {
+window.addEventListener('load', async () => {
   await loadQuestions();
   startGame();
 });

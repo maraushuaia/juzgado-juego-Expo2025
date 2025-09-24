@@ -10,7 +10,7 @@ body {
   );
   color: #333;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,9 +21,9 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    "time time"
-    "question question"
-    "image answers";
+    'time time'
+    'question question'
+    'image answers';
   gap: 16px;
   width: 90vw;
   max-width: 1500px;
@@ -32,6 +32,7 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   height: 90vh;
+  margin-left: 160px;
 }
 
 .time {
@@ -72,7 +73,7 @@ body {
   justify-content: center;
   text-align: center;
   color: #ffffff;
-  min-height: 80px;
+  min-height: 120px;
 }
 
 .image {
@@ -155,9 +156,15 @@ body {
   left: 50px;
   width: 100px;
   height: 100px;
-  background-color: #f44336;
+  background: #2a7b9b;
+  background: linear-gradient(
+    45deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
   border-radius: 50%;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -173,9 +180,9 @@ body {
 }
 
 #question-timer-circle .label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  color: #ffffff;
+  color: black;
 }
 
 #score-circle {
@@ -184,9 +191,15 @@ body {
   left: 50px;
   width: 100px;
   height: 100px;
-  background-color: #f44336;
+  background: #2a7b9b;
+  background: linear-gradient(
+    45deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
   border-radius: 50%;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,11 +207,11 @@ body {
   font-family: Arial, sans-serif;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  animation: pulse 1s infinite alternate;
+  /* animation: pulse 1s infinite alternate; */
 }
 
 #score-circle .label {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -248,10 +261,10 @@ body {
 @media (max-width: 768px) {
   .container {
     grid-template-areas:
-      "time"
-      "question"
-      "image"
-      "answers";
+      'time'
+      'question'
+      'image'
+      'answers';
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto 1fr;
     gap: 20px;

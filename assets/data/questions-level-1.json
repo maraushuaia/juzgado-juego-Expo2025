@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "question": "Si vas en bici y ves un semáforo en rojo, ¿qué debes hacer?",
+    "image": "assets/images/ninos1.png",
+    "qr_code": "assets/images-qr/ninos1.png",
+    "options": [
+      "Seguir pedaleando rápido",
+      "Detenerte y esperar la luz verde",
+      "Doblar aunque no puedas",
+      "Cruzar caminando con la bici en rojo"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 2,
+    "question": "¿Dónde es correcto jugar con la pelota?",
+    "image": "assets/images/ninos2.png",
+    "qr_code": "assets/images-qr/ninos2.png",
+    "options": [
+      "En la calle con autos pasando",
+      "En la vereda llena de gente",
+      "En la plaza o en un patio seguro",
+      "En medio de un cruce peatonal"
+    ],
+    "answer": 2
+  },
+  {
+    "id": 3,
+    "question": "Cuando vas caminando por la vereda, ¿por dónde lo haces?",
+    "image": "assets/images/ninos3.png",
+    "qr_code": "assets/images-qr/ninos3.png",
+    "options": [
+      "Por el bordecito junto a la calle",
+      "Por el medio de la vereda",
+      "Por la calle junto a los autos",
+      "Por cualquier parte"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 4,
+    "question": "Si encuentras un cesto de basura lleno, ¿qué haces?",
+    "image": "assets/images/ninos4.png",
+    "qr_code": "assets/images-qr/ninos4.png",
+    "options": [
+      "Tiras la basura al piso",
+      "Guardas la basura hasta encontrar otro cesto",
+      "La dejas encima del cesto",
+      "La lanzas a la calle"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 5,
+    "question": "¿Por qué es importante usar casco en bici o patineta?",
+    "image": "assets/images/ninos5.png",
+    "qr_code": "assets/images-qr/ninos5.png",
+    "options": [
+      "Porque se ve genial",
+      "Porque protege tu cabeza en caso de accidente",
+      "Porque es molesto no usarlo",
+      "Porque es de moda"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 6,
+    "question": "¿Qué debes hacer si un auto está por doblar y tú quieres cruzar la calle?",
+    "image": "assets/images/ninos6.png",
+    "qr_code": "assets/images-qr/ninos6.png",
+    "options": [
+      "Correr rápido para cruzar antes",
+      "Esperar y cruzar cuando sea seguro",
+      "Pasar sin mirar",
+      "Hacer señas para que frene"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 7,
+    "question": "¿Qué significa una luz amarilla intermitente en un semáforo?",
+    "image": "assets/images/ninos7.png",
+    "qr_code": "assets/images-qr/ninos7.png",
+    "options": [
+      "Detenerse completamente",
+      "Avanzar con precaución",
+      "Acelerar para pasar rápido",
+      "Ignorar la señal"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 8,
+    "question": "¿Qué debes hacer si ves un accidente en la calle?",
+    "image": "assets/images/ninos8.png",
+    "qr_code": "assets/images-qr/ninos8.png",
+    "options": [
+      "Llamar a un adulto y a emergencias",
+      "Seguir jugando sin mirar",
+      "Tomar fotos y subirlas a internet",
+      "Intentar mover a los heridos sin cuidado"
+    ],
+    "answer": 0
+  },
+  {
+    "id": 9,
+    "question": "¿Por qué es importante respetar las señales de tránsito?",
+    "image": "assets/images/ninos9.png",
+    "qr_code": "assets/images-qr/ninos9.png",
+    "options": [
+      "Para evitar problemas con la policía",
+      "Porque ayudan a mantenernos seguros",
+      "Porque son muy coloridas",
+      "Porque las pintan en la escuela"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 10,
+    "question": "Si un peatón está cruzando la calle por la senda peatonal, ¿qué deben hacer los autos?",
+    "image": "assets/images/ninos10.png",
+    "qr_code": "assets/images-qr/ninos10.png",
+    "options": [
+      "Tocar bocina para que corra",
+      "Detenerse y dejarlo cruzar",
+      "Pasar rápido para no esperar",
+      "Ignorarlo y seguir"
+    ],
+    "answer": 1
+  }
+]
