@@ -7,11 +7,12 @@ const questionTimerCircleText = document.getElementById(
   "question-timer-circle-text"
 );
 const endGameBtn = document.getElementById("end-game-btn");
+const qrImage = document.getElementById("qr-image");
 
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
-let questionTimeLeft = 15;
+let questionTimeLeft = 20;
 let questionTimerInterval;
 let acceptingAnswers = false;
 
@@ -21,7 +22,7 @@ let acceptingAnswers = false;
  * message: string - text to display
  * duration: ms to auto-hide (optional, default 1500)
  */
-function showFeedbackCard(isCorrect, message, duration = 1500) {
+function showFeedbackCard(isCorrect, message, duration = 2000) {
   const checkSvg =
     '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const crossSvg =
@@ -83,7 +84,7 @@ function startGame() {
 }
 
 function startQuestionTimer() {
-  questionTimeLeft = 15;
+  questionTimeLeft = 20;
   questionTimerCircleText.textContent = questionTimeLeft;
 
   if (questionTimerInterval) {
@@ -96,7 +97,7 @@ function startQuestionTimer() {
     if (questionTimeLeft <= 0) {
       clearInterval(questionTimerInterval);
       acceptingAnswers = false;
-      showFeedbackCard(false, "Tiempo agotado!", 1500);
+      showFeedbackCard(false, "Tiempo agotado!", 2500);
       setTimeout(() => {
         nextQuestion();
       }, 1500);
@@ -114,6 +115,9 @@ function loadQuestion() {
   questionText.textContent = currentQuestion.question;
   questionImage.src = currentQuestion.image;
   questionImage.alt = currentQuestion.alt || "Imagen de la pregunta";
+
+  qrImage.src = currentQuestion.qr_code;
+  qrImage.alt = `Código QR para la pregunta ${currentQuestion.id}`;
 
   optionsContainer.innerHTML = "";
   currentQuestion.options.forEach((option, index) => {
@@ -150,7 +154,7 @@ function selectAnswer(selectedIndex) {
     scoreEl.textContent = score;
     showFeedbackCard(true, "¡Correcto!", 1500);
   } else {
-    showFeedbackCard(false, "Incorrecto.", 1500);
+    showFeedbackCard(false, "Incorrecto.", 6500);
   }
 
   clearInterval(questionTimerInterval);

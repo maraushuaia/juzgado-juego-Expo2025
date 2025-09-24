@@ -1,20 +1,9 @@
 [
   {
     "id": 1,
-    "question": "¿Cuál es la forma correcta de cruzar una calle con semáforo?",
-    "image": "assets/images/pregunta1.jpeg",
-    "options": [
-      "Cuando el semáforo está en verde para los peatones",
-      "Cuando no vienen autos",
-      "Corriendo para llegar rápido al otro lado",
-      "Cuando el semáforo está en rojo"
-    ],
-    "answer": 0
-  },
-  {
-    "id": 2,
     "question": "Si ves que alguien arroja basura en la vía pública, ¿qué deberías hacer?",
     "image": "assets/images/pregunta2.png",
+    "qr_code": "assets/images-qr/qr1.png",
     "options": [
       "Arrojar la basura de nuevo",
       "Ignorarlo",
@@ -24,9 +13,23 @@
     "answer": 2
   },
   {
+    "id": 2,
+    "question": "¿Cuál es la forma correcta de cruzar una calle con semáforo?",
+    "image": "assets/images/pregunta1.png",
+    "qr_code": "assets/images-qr/qr2.png",
+    "options": [
+      "Cuando el semáforo está en verde para los peatones",
+      "Cuando no vienen autos",
+      "Corriendo para llegar rápido al otro lado",
+      "Cuando el semáforo está en rojo"
+    ],
+    "answer": 0
+  },
+  {
     "id": 3,
     "question": "¿Qué debes hacer si un vehículo de emergencia se acerca con sirenas encendidas?",
-    "image": "assets/images/pregunta3.jpeg",
+    "image": "assets/images/pregunta3.png",
+    "qr_code": "assets/images-qr/qr3.png",
     "options": [
       "Seguir conduciendo normalmente",
       "Detenerte y ceder el paso",
@@ -38,7 +41,8 @@
   {
     "id": 4,
     "question": "¿Cuál es el rol principal del Juzgado de Faltas en Ushuaia?",
-    "image": "assets/images/pregunta4.jpg",
+    "image": "assets/images/pregunta4.png",
+    "qr_code": "assets/images-qr/qr4.png",
     "options": [
       "Organizar eventos culturales",
       "Aplicar sanciones por incumplimiento de normas",
@@ -50,7 +54,8 @@
   {
     "id": 5,
     "question": "¿Qué significa una luz amarilla intermitente en un semáforo?",
-    "image": "assets/images/pregunta5.jpg",
+    "image": "assets/images/pregunta5.jpeg",
+    "qr_code": "assets/images-qr/qr5.png",
     "options": [
       "Detenerse completamente",
       "Avanzar con precaución",
@@ -62,7 +67,8 @@
   {
     "id": 6,
     "question": "¿Por qué es importante respetar las normas de tránsito?",
-    "image": "assets/images/pregunta6.jpg",
+    "image": "assets/images/pregunta6.jpeg",
+    "qr_code": "assets/images-qr/qr6.png",
     "options": [
       "Para evitar multas solamente",
       "Para garantizar la seguridad de todos",
@@ -74,7 +80,8 @@
   {
     "id": 7,
     "question": "¿Qué debes hacer si ves un accidente de tránsito?",
-    "image": "assets/images/pregunta7.jpg",
+    "image": "assets/images/pregunta7.png",
+    "qr_code": "assets/images-qr/qr7.png",
     "options": [
       "Pasar sin detenerte",
       "Llamar a emergencias y ayudar si puedes",
@@ -86,7 +93,8 @@
   {
     "id": 8,
     "question": "¿Cuál es la mejor forma de evitar accidentes en la vía pública?",
-    "image": "assets/images/pregunta8.jpg",
+    "image": "assets/images/pregunta8.jpeg",
+    "qr_code": "assets/images-qr/qr8.png",
     "options": [
       "Respetar señales y normas de tránsito",
       "Conducir rápido para evitar problemas",
@@ -98,7 +106,8 @@
   {
     "id": 9,
     "question": "¿Qué sanción puede aplicar el Juzgado de Faltas por arrojar basura en la calle?",
-    "image": "assets/images/pregunta9.jpg",
+    "image": "assets/images/pregunta9.png",
+    "qr_code": "assets/images-qr/qr9.png",
     "options": [
       "Multa económica",
       "Premio por limpieza",
@@ -110,7 +119,8 @@
   {
     "id": 10,
     "question": "¿Qué debes hacer si un peatón está cruzando la calle en un paso peatonal?",
-    "image": "assets/images/pregunta10.jpg",
+    "image": "assets/images/pregunta10.jpeg",
+    "qr_code": "assets/images-qr/qr10.png",
     "options": [
       "Detenerte y ceder el paso",
       "Tocar bocina para que se apure",
