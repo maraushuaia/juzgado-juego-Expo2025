@@ -1,71 +1,84 @@
 [
   {
     "id": 1,
-    "question": "Si vas en bici y ves un semáforo en rojo, ¿qué debes hacer?",
-    "image": "assets/images/ninos1.png",
-    "qr_code": "assets/images-qr/ninos1.png",
+    "question": "Si quieres sacar a tu mascota a pasear, ¿puede salir corriendo suelto a tu lado?",
+    "image": "assets/images/ninos_mascota.png",
+    "qr_code": "assets/images-qr/ninos_mascota.png",
     "options": [
-      "Seguir pedaleando rápido",
-      "Detenerte y esperar la luz verde",
-      "Doblar aunque no puedas",
-      "Cruzar caminando con la bici en rojo"
+      "Sí, si es un perro pequeño",
+      "Debe salir con correa y bozal (si es necesario)",
+      "Solo si no hay nadie en la calle",
+      "Puede ir suelto si obedece"
     ],
     "answer": 1
   },
   {
     "id": 2,
-    "question": "¿Dónde es correcto jugar con la pelota?",
-    "image": "assets/images/ninos2.png",
-    "qr_code": "assets/images-qr/ninos2.png",
+    "question": "Si tienes menos de 12 años de edad, ¿puedes ir en el asiento delantero de un automóvil?",
+    "image": "assets/images/ninos_asiento.png",
+    "qr_code": "assets/images-qr/ninos_asiento.png",
     "options": [
-      "En la calle con autos pasando",
-      "En la vereda llena de gente",
-      "En la plaza o en un patio seguro",
-      "En medio de un cruce peatonal"
+      "Sí, si un adulto va atrás",
+      "Solo si el auto está lleno",
+      "Está prohibido transportar un menor de 12 años en el asiento delantero",
+      "Si, si usas el cinturón de seguridad"
     ],
     "answer": 2
   },
   {
     "id": 3,
-    "question": "Cuando vas caminando por la vereda, ¿por dónde lo haces?",
-    "image": "assets/images/ninos3.png",
-    "qr_code": "assets/images-qr/ninos3.png",
+    "question": "Tienes que cruzar rápido la calle, ¿se puede cruzar por algún otro lado que no sea la senda peatonal?",
+    "image": "assets/images/ninos_cruzar.png",
+    "qr_code": "assets/images-qr/ninos_cruzar.png",
     "options": [
-      "Por el bordecito junto a la calle",
-      "Por el medio de la vereda",
-      "Por la calle junto a los autos",
-      "Por cualquier parte"
+      "Sí, si no vienen autos",
+      "No, el lugar designado para que las personas crucen es la senda peatonal",
+      "Por la esquina, si no hay semáforo",
+      "Por donde sea más corto"
     ],
     "answer": 1
   },
   {
     "id": 4,
-    "question": "Si encuentras un cesto de basura lleno, ¿qué haces?",
-    "image": "assets/images/ninos4.png",
-    "qr_code": "assets/images-qr/ninos4.png",
+    "question": "Si te piden que dejes la basura de tu hogar en la vereda, ¿estás cometiendo una falta?",
+    "image": "assets/images/ninos_basura_vereda.png",
+    "qr_code": "assets/images-qr/ninos_basura_vereda.png",
     "options": [
-      "Tiras la basura al piso",
-      "Guardas la basura hasta encontrar otro cesto",
-      "La dejas encima del cesto",
-      "La lanzas a la calle"
+      "No, si la dejas bien ordenada",
+      "Sí, porque la basura debe depositarse en un cesto dispuesto para tal fin",
+      "Solo si la dejas por mucho tiempo",
+      "No, si la bolsa está cerrada"
     ],
     "answer": 1
   },
   {
     "id": 5,
-    "question": "¿Por qué es importante usar casco en bici o patineta?",
-    "image": "assets/images/ninos5.png",
-    "qr_code": "assets/images-qr/ninos5.png",
+    "question": "Tus padres te van a buscar al colegio en auto, ¿es correcto que te esperen estacionados en doble fila?",
+    "image": "assets/images/ninos_doble_fila.png",
+    "qr_code": "assets/images-qr/ninos_doble_fila.png",
     "options": [
-      "Porque se ve genial",
-      "Porque protege tu cabeza en caso de accidente",
-      "Porque es molesto no usarlo",
-      "Porque es de moda"
+      "Sí, si es solo un momento",
+      "No, porque no está permitido estacionar en doble fila aún cuando el conductor esté sentado en su asiento",
+      "Solo si no hay otro lugar",
+      "Si, si prenden las balizas"
     ],
     "answer": 1
   },
   {
     "id": 6,
+    "question": "¿Por qué está prohibido vender productos alimenticios vencidos?",
+    "image": "assets/images/ninos_vencidos.png",
+    "qr_code": "assets/images-qr/ninos_vencidos.png",
+    "options": [
+      "Porque no saben ricos",
+      "Para prevenir enfermedades y que la población sufra como consecuencia de ello",
+      "Porque la fecha es solo una sugerencia",
+      "Para que la gente compre productos nuevos"
+    ],
+    "answer": 1
+  },
+  {
+    "id": 7,
     "question": "¿Qué debes hacer si un auto está por doblar y tú quieres cruzar la calle?",
     "image": "assets/images/ninos6.png",
     "qr_code": "assets/images-qr/ninos6.png",
@@ -78,7 +91,7 @@
     "answer": 1
   },
   {
-    "id": 7,
+    "id": 8,
     "question": "¿Qué significa una luz amarilla intermitente en un semáforo?",
     "image": "assets/images/ninos7.png",
     "qr_code": "assets/images-qr/ninos7.png",
@@ -91,7 +104,7 @@
     "answer": 1
   },
   {
-    "id": 8,
+    "id": 9,
     "question": "¿Qué debes hacer si ves un accidente en la calle?",
     "image": "assets/images/ninos8.png",
     "qr_code": "assets/images-qr/ninos8.png",
@@ -102,19 +115,6 @@
       "Intentar mover a los heridos sin cuidado"
     ],
     "answer": 0
-  },
-  {
-    "id": 9,
-    "question": "¿Por qué es importante respetar las señales de tránsito?",
-    "image": "assets/images/ninos9.png",
-    "qr_code": "assets/images-qr/ninos9.png",
-    "options": [
-      "Para evitar problemas con la policía",
-      "Porque ayudan a mantenernos seguros",
-      "Porque son muy coloridas",
-      "Porque las pintan en la escuela"
-    ],
-    "answer": 1
   },
   {
     "id": 10,
