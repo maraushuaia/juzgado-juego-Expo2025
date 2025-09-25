@@ -21,9 +21,9 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    'time time'
-    'question question'
-    'image answers';
+    "time time"
+    "question question"
+    "image answers";
   gap: 16px;
   width: 90vw;
   max-width: 1500px;
@@ -32,7 +32,8 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   height: 90vh;
-  margin-left: 160px;
+  /* Corregido: Usa 'margin: auto' para centrar el contenedor en el eje horizontal */
+  margin: 0 auto;
 }
 
 .time {
@@ -142,12 +143,18 @@ body {
   border-color: #dc3545;
 }
 
+/* CORRECCIÓN: Estilo para que el contenedor del feedback actúe como una capa de superposición */
+/* CORRECCIÓN: Estilo para que el contenedor del feedback (la capa externa) ocupe toda la pantalla */
 #feedback {
-  margin-top: 10px;
-  font-size: 1.2em;
-  font-weight: bold;
-  height: 30px;
-  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Asegura que la tarjeta de feedback sea visible por encima de todo (incluyendo el screen-overlay: 9998) */
+  z-index: 9999;
+  /* Crucial: permite que el usuario haga clic en el fondo cuando el feedback NO está visible */
+  pointer-events: none;
 }
 
 #question-timer-circle {
@@ -261,10 +268,10 @@ body {
 @media (max-width: 768px) {
   .container {
     grid-template-areas:
-      'time'
-      'question'
-      'image'
-      'answers';
+      "time"
+      "question"
+      "image"
+      "answers";
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto 1fr;
     gap: 20px;
@@ -298,5 +305,151 @@ body {
     padding: 8px;
     bottom: 15px;
     left: 15px;
+  }
+}
+
+/* ---------------------------------------------------- */
+/* Base del Overlay */
+/* ---------------------------------------------------- */
+.screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Permite interactuar con los botones de abajo */
+  z-index: 9998; /* Debe estar debajo de la tarjeta de feedback */
+  transition: background-color 0.5s ease;
+}
+
+/* ---------------------------------------------------- */
+/* 1. EFECTO INCORRECTO: ATENUAR PANTALLA (DIM-SCREEN) */
+/* ---------------------------------------------------- */
+
+.dim-screen {
+  /* Fondo semi-transparente y oscuro para atenuar */
+  background-color: rgba(0, 0, 0, 0.7); /* Opacidad al 70% */
+  transition: background-color 0.5s ease; /* Transición suave */
+}
+
+/* ---------------------------------------------------- */
+/* N. EFECTO: NIEVE CAYENDO LENTAMENTE Y GIRANDO ❄️ */
+/* ---------------------------------------------------- */
+
+.snow-fall-effect {
+  overflow: hidden;
+  pointer-events: none; /* Asegura que la nieve no bloquee clics */
+}
+
+.snow-fall-effect::before,
+.snow-fall-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Copos de Nieve (puntos blancos más grandes) */
+  background-image: radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 255, 255, 0.9) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 20% 40%,
+      rgba(255, 255, 255, 0.9) 3px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 255, 255, 0.9) 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 40% 90%,
+      rgba(255, 255, 255, 0.9) 2px,
+      transparent 2px
+    );
+
+  /* Aumentar el background-size para menos densidad */
+  background-size: 80px 80px;
+  /* Animación más lenta (7s) y con giro (snow-drift) */
+  animation: snow-drift 7s linear infinite;
+}
+
+/* Desplazamiento para hacer la nieve más densa y aleatoria */
+.snow-fall-effect::after {
+  left: 50%; /* Desplazamiento horizontal */
+  top: -50%; /* Empieza más arriba */
+  background-size: 100px 100px;
+  animation-duration: 9s; /* Duración diferente para más aleatoriedad */
+  animation-delay: 1s; /* Empieza un poco después */
+}
+
+@keyframes snow-drift {
+  0% {
+    /* Empieza arriba, sin rotación */
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    /* Cae lentamente y rota 360 grados */
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------- */
+/* 2. EFECTO CORRECTO: ESTRELLAS CAYENDO - MANTENIDO */
+/* ---------------------------------------------------- */
+
+.star-fall-effect {
+  overflow: hidden;
+}
+
+.star-fall-effect::before,
+.star-fall-effect::after {
+  content: "";
+  position: absolute;
+  top: -100px; /* Empieza fuera de pantalla */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Genera estrellas (puntos amarillos y blancos) */
+  background-image: radial-gradient(circle at 15% 5%, #fff 3px, transparent 3px),
+    radial-gradient(circle at 30% 15%, #ffd700 4px, transparent 4px),
+    radial-gradient(circle at 50% 10%, #fff 2px, transparent 2px),
+    radial-gradient(circle at 70% 20%, #ffd700 4px, transparent 4px),
+    radial-gradient(circle at 90% 5%, #fff 3px, transparent 3px);
+
+  background-size: 150px 150px; /* Tamaño del patrón */
+  animation: star-fall 3s linear forwards;
+  opacity: 1;
+}
+
+/* Desplazar el segundo pseudo-elemento para más densidad y velocidad */
+.star-fall-effect::after {
+  background-image: radial-gradient(
+      circle at 10% 25%,
+      #ffd700 5px,
+      transparent 5px
+    ),
+    radial-gradient(circle at 35% 5%, #fff 3px, transparent 3px),
+    radial-gradient(circle at 60% 25%, #ffd700 4px, transparent 4px),
+    radial-gradient(circle at 85% 10%, #fff 2px, transparent 2px);
+
+  left: 50%;
+  top: -200px;
+  background-size: 180px 180px;
+  animation-duration: 4s;
+  animation-delay: 0.5s;
+}
+
+@keyframes star-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0; /* Desaparecen al llegar abajo */
   }
 }
