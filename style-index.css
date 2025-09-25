@@ -6,11 +6,15 @@ html,
   height: 100%;
   margin: 0;
   font-family: "Arial", sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
 body {
+  background-image: url("./assets/images-logos/imagen-back-game.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,8 +25,19 @@ body {
   background: rgba(0, 0, 0, 0.3);
   padding: 40px;
   border-radius: 15px;
-  
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#start-screen img {
+  max-width: 720px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#start-screen img:hover {
+  transform: scale(1.1);
 }
 
 #start-screen h1 {
