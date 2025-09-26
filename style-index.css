@@ -25,7 +25,9 @@ body {
   background: rgba(0, 0, 0, 0.555);
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid #00ff6a; /* Añade un borde para un aspecto más definido */
+  box-shadow: 0 0 30px #00ff6a, 0 0 40px #00ff6a, 0 0 50px #00ff6a; /* Efecto de neón */
+  animation: glow 2s infinite; /* Aplica la animación de brillo */
 }
 
 #start-screen img {
@@ -43,6 +45,7 @@ body {
 #start-screen h1 {
   font-size: 3em;
   margin-bottom: 20px;
+  text-shadow: 0 0 10px #00ff6a, 0 0 20px #00ff6a, 0 0 30px #00ff6a; /* Efecto de neón para el texto */
 }
 
 #start-screen p {
@@ -59,6 +62,26 @@ body {
   color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+#start-btn:hover {
+  background-color: #04a748;
+}
+
+#start-screen {
+  animation: glow 2s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px #00ff6a;
+  }
+  50% {
+    box-shadow: 0 0 40px #00ff6a, 0 0 50px #00ff6a;
+  }
+  100% {
+    box-shadow: 0 0 20px #00ff6a;
+  }
 }
 
 #start-btn:hover {

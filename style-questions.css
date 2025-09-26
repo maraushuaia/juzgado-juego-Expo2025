@@ -216,9 +216,9 @@ body {
 #score-circle {
   position: fixed;
   top: 60px;
-  left: 50px;
-  width: 180px;
-  height: 180px;
+  left: 40px;
+  width: 190px;
+  height: 190px;
   /* Cambiado de círculo a rectángulo con bordes redondeados */
   border-radius: 15px;
   /* Aplicando el mismo gradiente animado del H1 */
