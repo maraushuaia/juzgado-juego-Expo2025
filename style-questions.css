@@ -171,10 +171,10 @@ body {
 
 #question-timer-circle {
   position: fixed;
-  top: 220px;
-  left: 50px;
-  width: 180px;
-  height: 100px;
+  top: 300px;
+  left: 40px;
+  width: 190px;
+  height: 190px;
   /* Cambiado de círculo a rectángulo con bordes redondeados */
   border-radius: 15px;
   /* Aplicando el mismo gradiente animado del H1 */
@@ -186,7 +186,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Press Start 2P", cursive;
-  font-size: 34px;
+  font-size: 70px;
   font-weight: bold;
   /* Aplicando las mismas sombras y efectos del H1 */
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
@@ -205,7 +205,7 @@ body {
 }
 
 #question-timer-circle .label {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   color: #7fff00;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
@@ -218,7 +218,7 @@ body {
   top: 60px;
   left: 50px;
   width: 180px;
-  height: 100px;
+  height: 180px;
   /* Cambiado de círculo a rectángulo con bordes redondeados */
   border-radius: 15px;
   /* Aplicando el mismo gradiente animado del H1 */
@@ -247,7 +247,7 @@ body {
 }
 
 #score-circle .label {
-  font-size: 23;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 4px;
   color: #7fff00;
@@ -257,7 +257,7 @@ body {
 }
 
 #score-circle .score-value {
-  font-size: 30px;
+  font-size: 70px;
   font-weight: bold;
   color: #7fff00;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
@@ -373,7 +373,7 @@ to {
 /* QR Code Container */
 #qr-container {
   position: fixed;
-  bottom: 65px;
+  bottom: 40px;
   left: 40px;
   width: 180px;
   height: 180px;
