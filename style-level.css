@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Bangers", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Fondo específico para la página de niveles */
+  background-image: url("/assets/images-logos/imagen-back-game.webp");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.content {
+  background: rgba(0, 0, 0, 0.753);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff;
+}
+
+.welcome-image {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.level-selection {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 60px;
+}
+
+.level-option {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.level-option:hover {
+  transform: scale(1.1);
+}
+
+.level-option:nth-child(2) {
+  margin-left: 20px;
+}
+
+.level-option img {
+  width: 350px;
+  height: 350px;
+  border-radius: 15px;
+  border: 5px solid #ff00ff;
+  box-shadow: 0 0 20px #ff00ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.level-option img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
+}
+
+.level-option p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+  font-family: "Press Start 2P", cursive;
+}
+
+.content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #7fff00;
+  /* Black outline / stroke for the text */
+  -webkit-text-stroke: 2px #000; /* works in WebKit browsers (Chrome, Safari) */
+  /* Fallback outline using multiple shadows so non-WebKit browsers get a visible border */
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
+    0 0 40px #ff00ff, 0 0 80px #ff00ff;
+  position: relative;
+  font-family: "Press Start 2P", cursive;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+  -webkit-background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
+  background-size: 400% 400%;
+  /* Run both the glow and the gradient animations (comma-separated) */
+  animation: glow 1.5s ease-in-out infinite alternate, gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 40px #ff00ff,
+      0 0 80px #ff00ff;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
+      0 0 50px #00ffff, 0 0 100px #00ffff;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -9,7 +9,7 @@ body {
     rgba(237, 221, 83, 1) 100%
   );
   /* New: use the same background image as the landing page */
-  background-image: url('./assets/images-logos/imagen-back-game.png');
+  background-image: url("./assets/images-logos/imagen-back-game.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -26,9 +26,9 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    'time time'
-    'question question'
-    'image answers';
+    "time time"
+    "question question"
+    "image answers";
   gap: 16px;
   /* Reserva espacio a la izquierda para score, time y QR fijos */
   --left-offset: 260px;
@@ -39,7 +39,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   /* Fondo semitransparente para resaltar el contenido sobre la imagen */
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.644);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   height: 90vh;
@@ -171,65 +171,191 @@ body {
 
 #question-timer-circle {
   position: fixed;
-  top: 160px;
+  top: 220px;
   left: 50px;
-  width: 100px;
+  width: 180px;
   height: 100px;
-  /* Actualizamos al nuevo gradiente verde */
-  background: #04a748;
-  background: linear-gradient(45deg, #04a748 0%, #00ff6a 100%);
-  border-radius: 50%;
-  color: black;
+  /* Cambiado de círculo a rectángulo con bordes redondeados */
+  border-radius: 15px;
+  /* Aplicando el mismo gradiente animado del H1 */
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+  background-size: 400% 400%;
+  color: #7fff00;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
-  font-size: 32px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 34px;
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* Aplicando las mismas sombras y efectos del H1 */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
+    0 0 40px #ff00ff, 0 0 80px #ff00ff;
+  -webkit-text-stroke: 1px #000;
+  /* Sombra de caja combinada: sombra direccional para profundidad + brillo de color */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(255, 0, 255, 0.35), 0 0 40px rgba(0, 255, 255, 0.2);
   cursor: pointer;
   user-select: none;
   z-index: 1000;
-  animation: pulse 1s infinite alternate;
+  /* Aplicando las mismas animaciones del H1 */
+  animation: glow-timer 1.5s ease-in-out infinite alternate,
+    gradient-timer 5s ease infinite;
 }
 
 #question-timer-circle .label {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  color: black;
+  color: #7fff00;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  -webkit-text-stroke: 0.5px #000;
 }
 
 #score-circle {
   position: fixed;
-  top: 40px;
+  top: 60px;
   left: 50px;
-  width: 100px;
+  width: 180px;
   height: 100px;
-  /* Mismo gradiente que el temporizador para coherencia visual */
-  background: #04a748;
-  background: linear-gradient(45deg, #04a748 0%, #00ff6a 100%);
-  border-radius: 50%;
-  color: black;
+  /* Cambiado de círculo a rectángulo con bordes redondeados */
+  border-radius: 15px;
+  /* Aplicando el mismo gradiente animado del H1 */
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
+  background-size: 400% 400%;
+  color: #7fff00;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-family: "Press Start 2P", cursive;
+  /* Aplicando las mismas sombras y efectos del H1 */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
+    0 0 40px #ff00ff, 0 0 80px #ff00ff;
+  -webkit-text-stroke: 1px #000;
+  /* Sombra de caja combinada: sombra direccional para profundidad + brillo de color */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(255, 0, 255, 0.35), 0 0 40px rgba(0, 255, 255, 0.2);
   z-index: 1000;
-  /* animation: pulse 1s infinite alternate; */
+  /* Aplicando las mismas animaciones del H1 */
+  animation: glow-score 1.5s ease-in-out infinite alternate,
+    gradient-score 5s ease infinite;
+  animation: glow-score 1.5s ease-in-out infinite alternate,
+    gradient-score 5s ease infinite;
 }
 
 #score-circle .label {
-  font-size: 16px;
+  font-size: 23;
   font-weight: bold;
   margin-bottom: 4px;
+  color: #7fff00;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  -webkit-text-stroke: 0.5px #000;
 }
 
 #score-circle .score-value {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
+  color: #7fff00;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
+    0 0 40px #ff00ff, 0 0 80px #ff00ff;
+  -webkit-text-stroke: 1px #000;
+}
+
+/* Animaciones específicas para el timer */
+@keyframes gradient-timer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glow-timer {
+  from {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff,
+      0 0 40px #ff00ff, 0 0 80px #ff00ff;
+    /* Sombra direccional oscura combinada con el brillo inicial para que no se pierda */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+      0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+  to {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
+      0 0 50px #00ffff, 0 0 100px #00ffff;
+    /* Mantener la sombra direccional oscura también en el estado final */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+      0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
+  }
+}
+
+/* Animaciones específicas para el score */
+@keyframes gradient-score {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glow-score {
+  from {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff,
+      0 0 40px #ff00ff, 0 0 80px #ff00ff;
+    /* Sombra direccional oscura combinada con el brillo inicial para que no se pierda */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+      0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+  to {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
+      0 0 50px #00ffff, 0 0 100px #00ffff;
+    /* Mantener la sombra direccional oscura también en el estado final */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+      0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
+  }
+}
+
+to {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
+    0 0 50px #00ffff, 0 0 100px #00ffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
+}
+
+/* Mantenemos la animación pulse original como respaldo, pero ya no se usa */
+
+/* Estilos responsive para los nuevos rectángulos en dispositivos móviles */
+@media (max-width: 600px) {
+  #question-timer-circle,
+  #score-circle {
+    width: 120px;
+    height: 60px;
+    font-size: 0.8rem;
+  }
+
+  #question-timer-circle .label,
+  #score-circle .label {
+    font-size: 10px;
+  }
+
+  #score-circle .score-value {
+    font-size: 16px;
+  }
 }
 
 @keyframes pulse {
@@ -248,9 +374,9 @@ body {
 #qr-container {
   position: fixed;
   bottom: 65px;
-  left: 12px;
-  width: 160px;
-  height: 160px;
+  left: 40px;
+  width: 180px;
+  height: 180px;
   background: white;
   border-radius: 15px;
   padding: 10px;
@@ -272,10 +398,10 @@ body {
 @media (max-width: 768px) {
   .container {
     grid-template-areas:
-      'time'
-      'question'
-      'image'
-      'answers';
+      "time"
+      "question"
+      "image"
+      "answers";
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto 1fr;
     gap: 20px;
@@ -351,7 +477,7 @@ body {
 
 .snow-fall-effect::before,
 .snow-fall-effect::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -415,7 +541,7 @@ body {
 
 .star-fall-effect::before,
 .star-fall-effect::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -100px; /* Empieza fuera de pantalla */
   left: 0;

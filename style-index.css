@@ -10,7 +10,7 @@ html,
 }
 
 body {
-  background-image: url("./assets/images-logos/imagen-back-game.png");
+  background-image: url("./assets/images-logos/imagen-back-game.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@ body {
 
 #start-screen {
   text-align: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.555);
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);

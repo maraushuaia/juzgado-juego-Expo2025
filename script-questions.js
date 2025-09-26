@@ -110,7 +110,10 @@ function showFeedbackCard(isCorrect, message = "", duration = 6000) {
 
 async function loadQuestions() {
   try {
-    const response = await fetch("assets/data/questions-level-1.json");
+    const urlParams = new URLSearchParams(window.location.search);
+    const levelFile =
+      urlParams.get("level") || "assets/data/questions-level-1.json";
+    const response = await fetch(levelFile);
     questions = await response.json();
   } catch (error) {
     console.error(error);
@@ -248,7 +251,32 @@ questionTimerCircle.addEventListener("keypress", (event) => {
   }
 });
 
+// Función para establecer el fondo según el nivel seleccionado
+function setBackgroundByLevel() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const levelFile =
+    urlParams.get("level") || "assets/data/questions-level-1.json";
+
+  // Determinar el nivel basado en el archivo de preguntas
+  let backgroundImage;
+  if (levelFile.includes("level-1")) {
+    backgroundImage = "/assets/images-logos/imagen-back-game-inicial.webp";
+  } else if (levelFile.includes("level-2")) {
+    backgroundImage = "/assets/images-logos/imagen-back-game-medio.webp";
+  } else {
+    // Fallback a la imagen del nivel inicial
+    backgroundImage = "/assets/images-logos/imagen-back-game-inicial.webp";
+  }
+
+  // Aplicar la imagen de fondo al body
+  document.body.style.backgroundImage = `url('${backgroundImage}')`;
+  console.log(
+    `Fondo establecido para nivel: ${levelFile} -> ${backgroundImage}`
+  );
+}
+
 window.addEventListener("load", async () => {
+  setBackgroundByLevel(); // Establecer el fondo según el nivel
   await loadQuestions();
   startGame();
 });
