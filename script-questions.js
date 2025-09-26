@@ -30,7 +30,7 @@ const INCORRECT_IMAGE_PATH = "/assets/images-logos/imagen-triste.png";
  * message: string - text to display (optional, mainly for showing the correct answer on incorrect)
  * duration: ms to auto-hide (optional, default 2000)
  */
-function showFeedbackCard(isCorrect, message = "", duration = 6000) {
+function showFeedbackCard(isCorrect, message = "", duration = 4000) {
   // Limpiar cualquier efecto anterior
   screenOverlay.className = "screen-overlay";
   feedbackEl.innerHTML = "";
@@ -38,7 +38,10 @@ function showFeedbackCard(isCorrect, message = "", duration = 6000) {
   // 1. Aplicar efectos de pantalla según el resultado
   if (isCorrect) {
     // Guirnaldas/Confeti
+    screenOverlay.classList.add("dim-screen"); // Atenuar el fondo
     screenOverlay.classList.add("confetti-effect");
+    // Crear los elementos de confeti dinámicamente
+    createConfetti();
   } else {
     // Atenuar la pantalla y efecto de lluvia
     screenOverlay.classList.add("dim-screen");
@@ -54,10 +57,10 @@ function showFeedbackCard(isCorrect, message = "", duration = 6000) {
   // Contenido adicional para la versión incorrecta
   const messageHtml = message
     ? `<div class="feedback-text-message" style="
-         font-weight: 700; 
-         color: #d32f2f; 
-         font-size: 24px; 
-         text-align: center; 
+         font-weight: 700;
+         color: #d32f2f;
+         font-size: 24px;
+         text-align: center;
          margin-top: 16px;
          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
          background: rgba(255,255,255,0.9);
@@ -86,14 +89,14 @@ function showFeedbackCard(isCorrect, message = "", duration = 6000) {
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      min-width: 300px; 
+      min-width: 300px;
       justify-content: center;
       z-index: 9999;
     ">
       <div class="feedback-image" style="width: 720px; height: 720px;">
         <img src="${imagePath}" alt="${altText}" style="width: 100%; height: 100%; object-fit: contain;">
       </div>
-      ${messageHtml} 
+      ${messageHtml}
     </div>
   `;
 
@@ -103,8 +106,67 @@ function showFeedbackCard(isCorrect, message = "", duration = 6000) {
   if (duration > 0) {
     setTimeout(() => {
       feedbackEl.innerHTML = "";
-      screenOverlay.className = "screen-overlay"; // Limpia todos los efectos
+      screenOverlay.className = "screen-overlay";
+
+      // Eliminar cualquier confeti que pudiera quedar en el DOM
+      const existingConfetti = screenOverlay.querySelectorAll(".confetti");
+      existingConfetti.forEach((confetti) => confetti.remove());
     }, duration);
+  }
+}
+
+/**
+ * Función para crear elementos confeti dinámicamente
+ */
+/**
+ * Función para crear elementos confeti dinámicamente con efecto de ráfagas
+ */
+function createConfetti() {
+  // Limpiar confeti anterior
+  const existingConfetti = screenOverlay.querySelectorAll(".confetti");
+  existingConfetti.forEach((confetti) => confetti.remove());
+
+  // Crear múltiples ráfagas
+  for (let burst = 0; burst < 6; burst++) {
+    setTimeout(() => {
+      createBurst(screenOverlay, burst);
+    }, burst * 150);
+  }
+}
+
+function createBurst(container, burstIndex) {
+  const particleCount = 20;
+
+  for (let i = 0; i < particleCount; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+
+    // Posición inicial aleatoria
+    const isLeft = Math.random() < 0.5;
+    const startX = isLeft
+      ? Math.random() * 20 + 10 // 10-30% desde la izquierda
+      : Math.random() * 20 + 70; // 70-90% desde la izquierda
+
+    const startY = Math.random() * 20 + 10; // 10-30% desde arriba
+
+    confetti.style.left = startX + "%";
+    confetti.style.top = startY + "%";
+
+    // Añadir clase de animación
+    confetti.classList.add(isLeft ? "left-burst" : "right-burst");
+
+    // Delay aleatorio para efecto más natural
+    confetti.style.animationDelay = Math.random() * 0.5 + "s";
+
+    // Duración aleatoria
+    confetti.style.animationDuration = Math.random() * 1 + 2.5 + "s";
+
+    container.appendChild(confetti);
+
+    // Activar animación
+    setTimeout(() => {
+      confetti.classList.add("active");
+    }, 10);
   }
 }
 
