@@ -9,7 +9,7 @@ body {
     rgba(237, 221, 83, 1) 100%
   );
   /* New: use the same background image as the landing page */
-  background-image: url("./assets/images-logos/imagen-back-game.png");
+  background-image: url("./assets/images-logos/imagen-back-game.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -155,8 +155,217 @@ body {
   border-color: #dc3545;
 }
 
-/* CORRECCIÓN: Estilo para que el contenedor del feedback actúe como una capa de superposición */
-/* CORRECCIÓN: Estilo para que el contenedor del feedback (la capa externa) ocupe toda la pantalla */
+/* Estilos para el formulario de datos del jugador, coherentes con la estética del juego */
+.player-data-form {
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  max-width: 420px;
+  margin: 0 auto;
+  font-family: "Press Start 2P", cursive;
+  color: #fff;
+}
+
+/* Modal del formulario de datos del jugador */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  z-index: 12000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 420px;
+  width: 100%;
+  font-family: "Press Start 2P", cursive;
+  color: #3303;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #080808;
+  text-shadow: 0 0 5px #080808  ;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #7fff00;
+  background-color: white;
+  color: #7fff00;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="number"]:focus,
+.modal-content select:focus {
+  border-color: #00ff00;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button#submit-player-data {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal-content button#submit-player-data:hover {
+  background-color: #45a049;
+}
+
+.modal-content button#skip-player-data {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-top: 8px;
+}
+
+.modal-content button#skip-player-data:hover {
+  background-color: #cfcfcf;
+}
+
+.player-data-form h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #080808;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.player-data-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #7fff00;
+}
+
+.player-data-form input[type="text"],
+.player-data-form input[type="number"],
+.player-data-form select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #7fff00;
+  background-color: #111;
+  color: #7fff00;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.player-data-form input[type="text"]:focus,
+.player-data-form input[type="number"]:focus,
+.player-data-form select:focus {
+  border-color: #00ff00;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.15);
+}
+
+.player-data-form button {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.08s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.player-data-form button:active {
+  transform: translateY(1px);
+}
+
+.player-data-form button#submit-player-data {
+  background-color: #4caf50;
+  color: white;
+  border: 2px solid #3e8e41;
+}
+
+.player-data-form button#submit-player-data:hover {
+  background-color: #45a049;
+}
+
+.player-data-form button#skip-player-data {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-top: 8px;
+  border: 2px solid #cfcfcf;
+}
+
+.player-data-form button#skip-player-data:hover {
+  background-color: #cfcfcf;
+}
+
+/* Permitir una presentación centrada dentro de overlays */
+.player-data-form .form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Pequeños ajustes responsivos */
+@media (max-width: 480px) {
+  .player-data-form {
+    padding: 16px;
+    max-width: 360px;
+  }
+
+  .player-data-form h2 {
+    font-size: 1.1rem;
+  }
+
+  .player-data-form button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
 #feedback {
   position: fixed;
   top: 0;
@@ -242,8 +451,8 @@ body {
   /* Aplicando las mismas animaciones del H1 */
   animation: glow-score 1.5s ease-in-out infinite alternate,
     gradient-score 5s ease infinite;
-  animation: glow-score 1.5s ease-in-out infinite alternate,
-    gradient-score 5s ease infinite;
+  /* LÍNEA DUPLICADA ELIMINADA: animation: glow-score 1.5s ease-in-out infinite alternate,
+    gradient-score 5s ease infinite; */
 }
 
 #score-circle .label {
@@ -330,12 +539,14 @@ body {
   }
 }
 
+/* ELIMINADO: Bloque 'to' huérfano que no estaba dentro de una regla @keyframes.
 to {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
-    0 0 50px #00ffff, 0 0 100px #00ffff;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
+    0 0 50px #00ffff, 0 0 100px #00ffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
 }
+*/
 
 /* Mantenemos la animación pulse original como respaldo, pero ya no se usa */
 

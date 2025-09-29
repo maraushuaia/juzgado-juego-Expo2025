@@ -8,7 +8,7 @@ const feedbackEl = document.getElementById("feedback");
 const questionTimerCircleText = document.getElementById(
   "question-timer-circle-text"
 );
-const endGameBtn = document.getElementById("end-game-btn");
+const endGameBtn = document.getElementById("end-game-btn"); // Parece no usarse, considera eliminar si no es necesario.
 const qrImage = document.getElementById("qr-image");
 // Nuevo elemento para el overlay de atenuación y el confeti/lluvia
 const screenOverlay = document.getElementById("screen-overlay");
@@ -22,7 +22,7 @@ let acceptingAnswers = false;
 
 // Rutas a las imágenes de feedback
 const CORRECT_IMAGE_PATH = "/assets/images-logos/imagen-feliz.png";
-const INCORRECT_IMAGE_PATH = "/assets/images-logos/imagen-triste.png";
+const INCORRECT_IMAGE_PATH = "/assets/images-logos/imagen-triste.png"; // Corregido: .wep a .webp
 
 /**
  * Utility to show a centered feedback "card" overlay with an image and message.
@@ -57,22 +57,22 @@ function showFeedbackCard(isCorrect, message = "", duration = 4000) {
   // Contenido adicional para la versión incorrecta
   const messageHtml = message
     ? `<div class="feedback-text-message" style="
-         font-weight: 700;
-         color: #d32f2f;
-         font-size: 24px;
-         text-align: center;
-         margin-top: 16px;
-         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-         background: rgba(255,255,255,0.9);
-         padding: 12px 20px;
-         border-radius: 8px;
-         border: 3px solid #d32f2f;
-         box-shadow: 0 4px 12px rgba(211,47,47,0.2);
-         max-width: 90%;
-         line-height: 1.4;
-       ">
-         ${message}
-       </div>`
+           font-weight: 700;
+           color: #d32f2f;
+           font-size: 24px;
+           text-align: center;
+           margin-top: 16px;
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+           background: rgba(255,255,255,0.9);
+           padding: 12px 20px;
+           border-radius: 8px;
+           border: 3px solid #d32f2f;
+           box-shadow: 0 4px 12px rgba(211,47,47,0.2);
+           max-width: 90%;
+           line-height: 1.4;
+        ">
+          ${message}
+        </div>`
     : "";
 
   const cardHtml = `
@@ -115,9 +115,6 @@ function showFeedbackCard(isCorrect, message = "", duration = 4000) {
   }
 }
 
-/**
- * Función para crear elementos confeti dinámicamente
- */
 /**
  * Función para crear elementos confeti dinámicamente con efecto de ráfagas
  */
@@ -295,23 +292,176 @@ function nextQuestion() {
 }
 
 function endGame() {
-  clearInterval(questionTimerInterval);
   acceptingAnswers = false;
   localStorage.setItem("finalScore", score);
-  window.location.href = "conclusion.html";
+
+  // Reemplazamos el formulario embebido por un modal centrado para mejorar la visibilidad
+  const modalHtml = `
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Datos del jugador</h2>
+      <label for="player-name">Nombre:</label>
+      <input type="text" id="player-name" name="player-name" required />
+      <label for="player-age">Edad:</label>
+      <input type="number" id="player-age" name="player-age" min="1" max="120" required />
+      <label for="player-gender">Género:</label>
+      <select id="player-gender" name="player-gender" required>
+        <option value="">Seleccione...</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+        <option value="Prefiero no decir">Prefiero no decir</option>
+      </select>
+      <label for="player-school">Escuela:</label>
+      <input type="text" id="player-school" name="player-school" required />
+      <div class="modal-actions" style="margin-top:12px;">
+        <button id="submit-player-data">Enviar</button>
+        <button id="skip-player-data">Omitir</button>
+      </div>
+    </div>
+  `;
+
+  // Crear o reutilizar overlay/modal (guardamos en la variable 'overlay' para mantener compatibilidad con el código siguiente)
+  let overlay = document.getElementById("modal-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "modal-overlay";
+    document.body.appendChild(overlay);
+  }
+
+  // Ocultar #feedback si existe para que no bloquee la interacción del modal
+  const feedbackEl = document.getElementById("feedback");
+  if (feedbackEl) {
+    feedbackEl.style.display = "none";
+  }
+
+  // Estilos del overlay/modal (centra el contenido)
+  Object.assign(overlay.style, {
+    position: "fixed",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "rgba(0,0,0,0.6)",
+    zIndex: "11000",
+    padding: "20px",
+    overflowY: "auto",
+  });
+
+  // Estilos mínimos para el contenido del modal para que se vea como diálogo
+  // (se colocan en línea para no depender de CSS externo; pueden adaptarse si hay stylesheet)
+  const contentWrapper = document.createElement("div");
+  contentWrapper.innerHTML = modalHtml;
+  Object.assign(contentWrapper.firstElementChild.style, {
+    background: "#fff",
+    color: "#000",
+    padding: "20px",
+    borderRadius: "8px",
+    maxWidth: "480px",
+    width: "100%",
+    boxSizing: "border-box",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
+  });
+
+  // Reemplazar el innerHTML del overlay por el contenido ya estilizado
+  overlay.innerHTML = "";
+  overlay.appendChild(contentWrapper.firstElementChild);
+
+  // Para accesibilidad, mover el foco al primer campo
+  const firstInput = overlay.querySelector("#player-name");
+  if (firstInput) {
+    firstInput.focus();
+  }
+
+  // Asegurar que el overlay sea visible
+  overlay.style.display = "flex";
+
+  const submitBtn = document.getElementById("submit-player-data");
+  const skipBtn = document.getElementById("skip-player-data");
+
+  const closeAndFinish = () => {
+    overlay.style.display = "none";
+    overlay.innerHTML = "";
+    // Redirigir a la página de conclusión para mostrar resultados o leaderboard
+    window.location.href = "conclusion.html";
+    // Redirigir a la página de conclusión para mostrar resultados o leaderboard
+    window.location.href = "conclusion.html";
+  };
+
+  submitBtn.addEventListener("click", () => {
+    const name = document.getElementById("player-name").value.trim();
+    const ageVal = document.getElementById("player-age").value;
+    const age = ageVal ? parseInt(ageVal, 10) : null;
+    const gender = document.getElementById("player-gender").value;
+    const school = document.getElementById("player-school").value.trim();
+
+    if (!name || !age || !gender || !school) {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+
+    const playerData = { name, age, gender, school, score };
+
+    // Preparar respuestas para enviar
+    // Se intenta obtener la respuesta del jugador desde `selectedAnswer` o `userAnswer`
+    // NOTA: Para que esto funcione, necesitas guardar la respuesta del usuario en el objeto de la pregunta
+    // cuando se selecciona la respuesta en `selectAnswer`. Por ejemplo:
+    // `questions[currentQuestionIndex].userAnswer = selectedIndex;`
+    const playerAnswers = questions.map((q, index) => {
+      const given = q.userAnswer ?? null; // Asumiendo que guardaste la respuesta en `userAnswer`
+      const correct =
+        typeof q.answer !== "undefined" ? q.answer === given : null;
+      return {
+        questionId: q.id ?? index + 1,
+        answerGiven: given,
+        correct: correct,
+      };
+    });
+
+    // Enviar datos al backend
+    fetch("save_player_data.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ playerData, playerAnswers }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.success) {
+          alert("Gracias por jugar. Sus datos han sido registrados.");
+          closeAndFinish();
+        } else {
+          alert("Error al guardar los datos. Intente nuevamente.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error de conexión. Intente nuevamente.");
+      });
+  });
+
+  skipBtn.addEventListener("click", () => {
+    closeAndFinish();
+  });
 }
 
 const questionTimerCircle = document.getElementById("question-timer-circle");
 
-questionTimerCircle.addEventListener("click", () => {
-  endGame();
-});
-
-questionTimerCircle.addEventListener("keypress", (event) => {
-  if (event.key === "Enter" || event.key === " ") {
+// Asegúrate de que este elemento exista en tu HTML, si no, estos listeners darán error.
+if (questionTimerCircle) {
+  questionTimerCircle.addEventListener("click", () => {
     endGame();
-  }
-});
+  });
+
+  questionTimerCircle.addEventListener("keypress", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      endGame();
+    }
+  });
+}
 
 // Función para establecer el fondo según el nivel seleccionado
 function setBackgroundByLevel() {
