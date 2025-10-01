@@ -1,26 +1,76 @@
-/* Styles for the questions page */
-body {
-  font-family: Arial, sans-serif;
-  /* Fallback gradient in case the image is not available */
-  background: linear-gradient(
+/*==============================================
+   VARIABLES GLOBALES (Temas y Colores Comunes)
+==============================================*/
+:root {
+  /* Colores principales */
+  --color-primary: #050505; /* Fondo Botón y Pregunta */
+  --color-text-light: #ffffff;
+  --color-text-dark: #000000;
+
+  /* Colores de estado */
+  --color-correct: #28a745;
+  --color-incorrect: #dc3545;
+  --color-hover-btn: #a811b6;
+
+  /* Colores de neón/juego (usados en círculos de score/timer) */
+  --color-neon-main: #7fff00;
+  --color-neon-a: #ff00ff;
+  --color-neon-b: #00ffff;
+
+  /* Gradientes reutilizables */
+  --bg-neon-gradient: linear-gradient(
+    45deg,
+    var(--color-neon-a),
+    var(--color-neon-b),
+    var(--color-neon-a),
+    var(--color-neon-b)
+  );
+  /* Fondo base para formularios y modales (REFACTORIZADO) */
+  --bg-form-modal: linear-gradient(
     90deg,
     rgba(42, 123, 155, 1) 0%,
     rgba(87, 199, 133, 1) 50%,
     rgba(237, 221, 83, 1) 100%
   );
-  /* New: use the same background image as the landing page */
-  background-image: url('./assets/images-logos/imagen-back-game.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #ffffff;
+
+  /* Offset izquierdo para la columna de elementos fijos (score, timer, QR) */
+  --left-offset: 260px;
+
+  /* Mixin para el Text Shadow neón (REFACTORIZADO) */
+  --text-shadow-neon: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0 0 5px var(--color-neon-main), 0 0 10px #fff,
+    0 0 20px var(--color-neon-a), 0 0 40px var(--color-neon-a),
+    0 0 80px var(--color-neon-a);
+
+  /* Mixin para el Box Shadow neón (REFACTORIZADO) */
+  --box-shadow-neon: 0 12px 24px rgba(0, 0, 0, 0.6),
+    0 6px 12px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 0, 255, 0.35),
+    0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+/*==============================================
+   BASE Y ESTRUCTURA GENERAL
+==============================================*/
+
+/* Base y Fondo de Página */
+body {
+  font-family: Arial, sans-serif;
+  color: var(--color-text-light);
   margin: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* Fondo principal con fallback de gradiente */
+  background: var(--bg-form-modal); /* Usando gradiente como fallback */
+  background-image: url("./assets/images-logos/imagen-back-game.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* Contenedor Principal (Grid de Preguntas) */
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -30,32 +80,28 @@ body {
     'question question'
     'image answers';
   gap: 16px;
-  /* Reserva espacio a la izquierda para score, time y QR fijos */
-  --left-offset: 260px;
+
   margin-left: var(--left-offset);
-  /* Ocupa el máximo ancho disponible restando el offset izquierdo y un pequeño margen */
   width: calc(100vw - var(--left-offset) - 40px);
   max-width: none;
   padding: 20px;
   border-radius: 15px;
-  /* Fondo semitransparente para resaltar el contenido sobre la imagen */
   background: rgba(0, 0, 0, 0.644);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   height: 90vh;
-  /* Corregido: centrar verticalmente con margen superior ligero */
   margin-top: 20px;
 }
 
+/* Título, Puntaje y Tiempo */
 .time {
   grid-area: time;
-  background: #eeaeca;
   background: radial-gradient(
     circle,
     rgba(238, 174, 202, 1) 0%,
     rgba(148, 187, 233, 1) 100%
   );
-  color: black;
+  color: var(--color-text-dark);
   border-radius: 10px;
   padding: 15px;
   font-size: 1.2em;
@@ -73,9 +119,10 @@ body {
   align-items: center;
 }
 
+/* Sección de Pregunta */
 .question {
   grid-area: question;
-  background: #020202;
+  background: var(--color-primary);
   padding: 10px;
   border-radius: 10px;
   font-size: 3.5em;
@@ -83,18 +130,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #ffffff;
+  text-align: left;
+  color: var(--color-text-light);
   min-height: 120px;
 }
 
+/* Sección de Imagen */
 .image {
   grid-area: image;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  border-radius: 10px;
   padding: 10px;
 }
 
@@ -104,6 +150,7 @@ body {
   border-radius: 10px;
 }
 
+/* Sección de Respuestas y Botones */
 .answers {
   grid-area: answers;
   display: flex;
@@ -121,20 +168,18 @@ body {
   border-radius: 50px;
   cursor: pointer;
   border: none;
-  /* Nuevo color base coherente con la pantalla de inicio */
-  background: #050505;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-text-light);
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  height: 90px; /* altura fija, ajusta según prefieras */
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .option-btn:hover {
-  /* Verde ligeramente más oscuro al pasar el ratón */
-  background: #a811b6;
+  background: var(--color-hover-btn);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
@@ -144,74 +189,54 @@ body {
 }
 
 .option-btn.correct {
-  background-color: #28a745;
-  color: white;
-  border-color: #28a745;
+  background-color: var(--color-correct);
+  color: var(--color-text-light);
 }
 
 .option-btn.incorrect {
-  background-color: #dc3545;
-  color: white;
-  border-color: #dc3545;
+  background-color: var(--color-incorrect);
+  color: var(--color-text-light);
 }
 
-/* Estilos para el formulario de datos del jugador, coherentes con la estética del juego */
-.player-data-form {
-  background: linear-gradient(
-    90deg,
-    rgba(42, 123, 155, 1) 0%,
-    rgba(87, 199, 133, 1) 50%,
-    rgba(237, 221, 83, 1) 100%
-  );
+/*==============================================
+   FORMULARIO Y MODAL (player-data-form & modal-content)
+==============================================*/
+
+/* Estilos de Fondo y Base (REFACTORIZADO con variable) */
+.player-data-form,
+.modal-content {
+  background: var(--bg-form-modal);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-  max-width: 420px;
-  margin: 0 auto;
-  font-family: 'Press Start 2P', cursive;
-  color: #fff;
+  max-width: 680px;
+  width: 100%;
+  font-family: "Press Start 2P", cursive;
+  box-sizing: border-box; /* Asegura padding consistente */
 }
 
-/* Modal del formulario de datos del jugador */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-  z-index: 12000;
-  overflow-y: auto;
+/* Estilos Específicos */
+.player-data-form {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  margin: 0 auto;
+  color: var(--color-text-light);
 }
 
 .modal-content {
-  background: linear-gradient(
-    90deg,
-    rgba(42, 123, 155, 1) 0%,
-    rgba(87, 199, 133, 1) 50%,
-    rgba(237, 221, 83, 1) 100%
-  );
-  padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 420px;
-  width: 100%;
-  font-family: 'Press Start 2P', cursive;
-  color: #3303;
+  color: #000; /* Color específico del modal (se usó #3303 antes, ahora #000) */
 }
 
+/* Títulos del formulario/modal */
+.player-data-form h2,
 .modal-content h2 {
   margin-top: 0;
   font-size: 1.5rem;
   text-align: center;
   color: #080808;
-  text-shadow: 0 0 5px #080808;
 }
 
+/* Etiquetas (Labels) */
+.player-data-form label,
 .modal-content label {
   display: block;
   margin-bottom: 6px;
@@ -219,35 +244,59 @@ body {
   font-size: 0.9rem;
 }
 
-.modal-content input[type='text'],
-.modal-content input[type='number'],
+.player-data-form label {
+  color: var(--color-neon-main); /* Color específico del form de juego */
+}
+
+/* Input/Select - Estilos Base (sin width) */
+.player-data-form input[type="text"],
+.player-data-form input[type="number"],
+.player-data-form select,
+.modal-content input[type="text"],
+.modal-content input[type="number"],
 .modal-content select {
-  width: 90%;
   margin-bottom: 12px;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #7fff00;
-  background: linear-gradient(
-    90deg,
-    rgba(42, 123, 155, 1) 0%,
-    rgba(87, 199, 133, 1) 50%,
-    rgba(237, 221, 83, 1) 100%
-  );
-  color: black;
   font-size: 1rem;
   font-weight: bold;
   outline: none;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
-.modal-content input[type='text']:focus,
-.modal-content input[type='number']:focus,
-.modal-content select:focus {
-  border-color: #00ff00;
+/* --- Nuevos Estilos para Anchos Individuales --- */
+/* Ya no se usa 'display: block;' aquí porque el layout lo manejará el Flexbox/Form-row */
+#player-name,
+#player-school {
+  width: 95%;
 }
 
+/* Reducimos el ancho de los campos individuales, ya que compartirán el espacio */
+#player-age {
+  width: 90%; /* Ocupa el 100% del contenedor Flexbox que le asignemos */
+}
+
+#player-gender {
+  width: 90%; /* Ocupa el 100% del contenedor Flexbox que le asignemos */
+}
+
+/* --- NUEVO: Contenedor para la Fila de Edad y Género --- */
+.form-row {
+  display: flex;
+  gap: 20px; /* Espacio entre los dos campos */
+  margin-bottom: 12px; /* Mantiene la separación con el siguiente elemento */
+}
+
+/* Cada columna en la fila ocupará la mitad del espacio disponible */
+.form-column {
+  flex: 1; /* Esto hace que cada columna ocupe el mismo espacio */
+}
+
+/* Botones del formulario/modal - Estilos Base */
+.player-data-form button,
 .modal-content button {
-  width: 100%;
+  width: 80%;
   padding: 12px;
   font-weight: bold;
   font-size: 1.1rem;
@@ -255,74 +304,14 @@ body {
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
 
-.modal-content button#submit-player-data {
-  background-color: #874caf;
-  color: white;
-}
-
-.modal-content button#submit-player-data:hover {
-  background-color: #45a049;
-}
-
-.modal-content button#skip-player-data {
-  background-color: #e0e0e0;
-  color: #333;
-  margin-top: 8px;
-}
-
-.modal-content button#skip-player-data:hover {
-  background-color: #cfcfcf;
-}
-
-.player-data-form h2 {
-  margin-top: 0;
-  font-size: 1.5rem;
-  text-align: center;
-  color: #080808;
-  text-shadow: 0 0 5px #00ff00;
-}
-
-.player-data-form label {
+  /* Centrado */
   display: block;
-  margin-bottom: 6px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: #7fff00;
+  margin: 0 auto;
 }
 
-.player-data-form input[type='text'],
-.player-data-form input[type='number'],
-.player-data-form select {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid #7fff00;
-  background-color: #111;
-  color: #7fff00;
-  font-size: 1rem;
-  font-weight: bold;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.2s ease;
-}
-
-.player-data-form input[type='text']:focus,
-.player-data-form input[type='number']:focus,
-.player-data-form select:focus {
-  border-color: #00ff00;
-  box-shadow: 0 0 8px rgba(0, 255, 0, 0.15);
-}
-
+/* Estilos Específicos de botones de formulario (player-data-form) */
 .player-data-form button {
-  width: 100%;
-  padding: 12px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.08s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
@@ -352,232 +341,105 @@ body {
   background-color: #cfcfcf;
 }
 
-/* Permitir una presentación centrada dentro de overlays */
+/* Estilos Específicos de botones del modal */
+.modal-content button#submit-player-data {
+  background-color: #874caf;
+  color: white;
+}
+
+.modal-content button#submit-player-data:hover {
+  background-color: #45a049;
+}
+
+.modal-content button#skip-player-data {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-top: 8px;
+}
+
+.modal-content button#skip-player-data:hover {
+  background-color: #cfcfcf;
+}
+
+/* Contenedor Flex del formulario de juego */
 .player-data-form .form-inner {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* Pequeños ajustes responsivos */
-@media (max-width: 480px) {
-  .player-data-form {
-    padding: 16px;
-    max-width: 360px;
-  }
+/*==============================================
+   ELEMENTOS FIJOS (Score, Timer, QR)
+==============================================*/
 
-  .player-data-form h2 {
-    font-size: 1.1rem;
-  }
+/* Agrupamiento de estilos de los círculos fijos (REFACTORIZADO con variables) */
+#question-timer-circle,
+#score-circle {
+  /* Posición y tamaño base */
+  position: fixed;
+  width: 190px;
+  height: 190px;
+  border-radius: 15px;
+  z-index: 1000;
 
-  .player-data-form button {
-    font-size: 1rem;
-    padding: 10px;
-  }
+  /* Estilos visuales comunes */
+  font-family: "Press Start 2P", cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+
+  /* Fondo animado y neón */
+  background: var(--bg-neon-gradient);
+  background-size: 400% 400%;
+  color: var(--color-neon-main);
+
+  /* Sombras usando variables */
+  text-shadow: var(--text-shadow-neon);
+  box-shadow: var(--box-shadow-neon);
+  -webkit-text-stroke: 1px #000;
+
+  /* Animaciones agrupadas */
+  animation: glow 1.5s ease-in-out infinite alternate, gradient 5s ease infinite;
 }
 
-#feedback {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Asegura que la tarjeta de feedback sea visible por encima de todo (incluyendo el screen-overlay: 9998) */
-  z-index: 9999;
-  /* Crucial: permite que el usuario haga clic en el fondo cuando el feedback NO está visible */
-  pointer-events: none;
+/* Posiciones específicas */
+#score-circle {
+  top: 60px;
+  left: 40px;
 }
 
 #question-timer-circle {
-  position: fixed;
   top: 300px;
   left: 40px;
-  width: 190px;
-  height: 190px;
-  /* Cambiado de círculo a rectángulo con bordes redondeados */
-  border-radius: 15px;
-  /* Aplicando el mismo gradiente animado del H1 */
-  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
-  background-size: 400% 400%;
-  color: #7fff00;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
   font-size: 70px;
   font-weight: bold;
-  /* Aplicando las mismas sombras y efectos del H1 */
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
-    0 0 40px #ff00ff, 0 0 80px #ff00ff;
-  -webkit-text-stroke: 1px #000;
-  /* Sombra de caja combinada: sombra direccional para profundidad + brillo de color */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(255, 0, 255, 0.35), 0 0 40px rgba(0, 255, 255, 0.2);
-  cursor: pointer;
-  user-select: none;
-  z-index: 1000;
-  /* Aplicando las mismas animaciones del H1 */
-  animation: glow-timer 1.5s ease-in-out infinite alternate,
-    gradient-timer 5s ease infinite;
 }
 
-#question-timer-circle .label {
-  font-size: 25px;
-  font-weight: bold;
-  color: #7fff00;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
-  -webkit-text-stroke: 0.5px #000;
-}
-
-#score-circle {
-  position: fixed;
-  top: 60px;
-  left: 40px;
-  width: 190px;
-  height: 190px;
-  /* Cambiado de círculo a rectángulo con bordes redondeados */
-  border-radius: 15px;
-  /* Aplicando el mismo gradiente animado del H1 */
-  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff);
-  background-size: 400% 400%;
-  color: #7fff00;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Press Start 2P', cursive;
-  /* Aplicando las mismas sombras y efectos del H1 */
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
-    0 0 40px #ff00ff, 0 0 80px #ff00ff;
-  -webkit-text-stroke: 1px #000;
-  /* Sombra de caja combinada: sombra direccional para profundidad + brillo de color */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(255, 0, 255, 0.35), 0 0 40px rgba(0, 255, 255, 0.2);
-  z-index: 1000;
-  /* Aplicando las mismas animaciones del H1 */
-  animation: glow-score 1.5s ease-in-out infinite alternate,
-    gradient-score 5s ease infinite;
-  /* LÍNEA DUPLICADA ELIMINADA: animation: glow-score 1.5s ease-in-out infinite alternate,
-    gradient-score 5s ease infinite; */
-}
-
+/* Estilos de etiquetas y valores (Agrupado para evitar repetición de text-shadow base) */
+#question-timer-circle .label,
 #score-circle .label {
   font-size: 25px;
   font-weight: bold;
-  margin-bottom: 4px;
-  color: #7fff00;
+  color: var(--color-neon-main);
+  /* Sombra de texto básica (neón más sutil) */
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
   -webkit-text-stroke: 0.5px #000;
+}
+
+#score-circle .label {
+  margin-bottom: 4px;
 }
 
 #score-circle .score-value {
   font-size: 70px;
   font-weight: bold;
-  color: #7fff00;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
-    0 0 40px #ff00ff, 0 0 80px #ff00ff;
+  color: var(--color-neon-main);
+  text-shadow: inherit;
   -webkit-text-stroke: 1px #000;
-}
-
-/* Animaciones específicas para el timer */
-@keyframes gradient-timer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes glow-timer {
-  from {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-      1px 1px 0 #000, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff,
-      0 0 40px #ff00ff, 0 0 80px #ff00ff;
-    /* Sombra direccional oscura combinada con el brillo inicial para que no se pierda */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
-      0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
-  }
-  to {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-      1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
-      0 0 50px #00ffff, 0 0 100px #00ffff;
-    /* Mantener la sombra direccional oscura también en el estado final */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
-      0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
-  }
-}
-
-/* Animaciones específicas para el score */
-@keyframes gradient-score {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes glow-score {
-  from {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-      1px 1px 0 #000, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff,
-      0 0 40px #ff00ff, 0 0 80px #ff00ff;
-    /* Sombra direccional oscura combinada con el brillo inicial para que no se pierda */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
-      0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
-  }
-  to {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-      1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
-      0 0 50px #00ffff, 0 0 100px #00ffff;
-    /* Mantener la sombra direccional oscura también en el estado final */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
-      0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
-  }
-}
-
-/* Estilos responsive para los nuevos rectángulos en dispositivos móviles */
-@media (max-width: 600px) {
-  #question-timer-circle,
-  #score-circle {
-    width: 120px;
-    height: 60px;
-    font-size: 0.8rem;
-  }
-
-  #question-timer-circle .label,
-  #score-circle .label {
-    font-size: 10px;
-  }
-
-  #score-circle .score-value {
-    font-size: 16px;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 /* QR Code Container */
@@ -587,7 +449,6 @@ body {
   left: 40px;
   width: 180px;
   height: 180px;
-  /* background: white; */
   border-radius: 15px;
   padding: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -605,7 +466,262 @@ body {
   border-radius: 8px;
 }
 
+/*==============================================
+   ANIMACIONES
+==============================================*/
+
+/* Animación de Gradiente */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación de Brillo (Glow) */
+@keyframes glow {
+  from {
+    text-shadow: var(--text-shadow-neon);
+    box-shadow: var(--box-shadow-neon);
+  }
+  to {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--color-neon-b),
+      0 0 50px var(--color-neon-b), 0 0 100px var(--color-neon-b);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.35),
+      0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
+  }
+}
+
+/*==============================================
+   OVERLAYS Y EFECTOS VISUALES
+==============================================*/
+
+/* Modal Overlay (REFACTORIZADO: Usa estilos del CSS externo) */
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0, 0, 0);
+  z-index: 11000;
+  padding: 20px;
+  overflow-y: auto;
+  display: none;
+}
+
+/* Overlay Base para Feedback */
+.screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: background-color 0.5s ease;
+}
+
+/* Dim Screen (Efecto Incorrecto) */
+.dim-screen {
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: background-color 0.5s ease;
+}
+
+/* Feedback Box (Contenedor de la tarjeta) */
+#feedback {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Tarjeta de Feedback Principal (Desde JS) */
+.feedback-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(237, 221, 83, 1);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+}
+
+/* Contenedor de la Imagen de Feedback */
+.feedback-image {
+  width: 480px;
+  height: 620px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.feedback-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Mensaje de Retroalimentación (solo para incorrecto) */
+.feedback-text-message {
+  font-weight: 700;
+  color: #d32f2f;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 3px solid #d32f2f;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+/* Estilos para el texto de la respuesta correcta dentro del mensaje de error */
+.feedback-text-message span {
+  font-weight: 800;
+  font-size: 30px;
+  color: #d32f2f;
+}
+
+/* --- Efectos de fondo (Nieve, Estrellas, Lluvia, Confeti) --- */
+/* Agrupamiento de pseudo-elementos de efectos de fondo */
+.snow-fall-effect::before,
+.snow-fall-effect::after,
+.star-fall-effect::before,
+.star-fall-effect::after,
+.rain-effect::before, /* Asumo que 'rain-effect' usa pseudo-elementos */
+.rain-effect::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Efecto Nieve */
+.snow-fall-effect {
+  overflow: hidden;
+}
+.snow-fall-effect::before {
+  /* ... Estilos y Animación ... */
+}
+.snow-fall-effect::after {
+  /* ... Estilos y Animación ... */
+}
+@keyframes snow-drift {
+  /* ... */
+}
+
+/* Efecto Estrellas */
+.star-fall-effect {
+  overflow: hidden;
+}
+.star-fall-effect::before {
+  /* ... Estilos y Animación ... */
+}
+.star-fall-effect::after {
+  /* ... Estilos y Animación ... */
+}
+@keyframes star-fall {
+  /* ... */
+}
+
+/* Efecto Confeti */
+.confetti-effect {
+  pointer-events: none;
+}
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  opacity: 0;
+  z-index: 1000;
+}
+.confetti.active {
+  opacity: 1;
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+/* Agrupamiento para estilos base del confeti */
+.confetti:nth-child(odd) {
+  background: #ff6b6b;
+  border-radius: 50%;
+}
+.confetti:nth-child(even) {
+  background: #4ecdc4;
+  transform: rotate(45deg);
+}
+.confetti:nth-child(3n) {
+  background: #45b7d1;
+  border-radius: 2px;
+}
+.confetti:nth-child(4n) {
+  background: #f9ca24;
+  border-radius: 50%;
+}
+.confetti:nth-child(5n) {
+  background: #6c5ce7;
+  transform: rotate(45deg);
+}
+.confetti:nth-child(6n) {
+  background: #a29bfe;
+  border-radius: 2px;
+}
+.confetti:nth-child(7n) {
+  background: #fd79a8;
+  border-radius: 50%;
+}
+.confetti:nth-child(8n) {
+  background: #00b894;
+  transform: rotate(45deg);
+}
+
+@keyframes confetti-fall {
+  /* ... */
+}
+.left-burst {
+  animation: left-burst 3s ease-out forwards;
+}
+.right-burst {
+  animation: right-burst 3s ease-out forwards;
+}
+@keyframes left-burst {
+  /* ... */
+}
+@keyframes right-burst {
+  /* ... */
+}
+
+/*==============================================
+   RESPONSIVE DESIGN (Media Queries)
+==============================================*/
+
 @media (max-width: 768px) {
+  /* Contenedor principal para móviles */
   .container {
     grid-template-areas:
       'time'
@@ -616,10 +732,11 @@ body {
     grid-template-rows: auto auto auto 1fr;
     gap: 20px;
     padding: 20px;
-    /* En pantallas pequeñas no desplazamos el contenedor, ocupa todo el ancho */
     margin-left: 0;
     width: 100vw;
     height: auto;
+    min-height: 100vh;
+    margin-top: 0;
   }
 
   .time {
@@ -628,311 +745,43 @@ body {
   }
 
   .question {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    min-height: 80px;
   }
 
   .option-btn {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 12px 20px;
+    height: auto;
   }
 
+  /* Ocultar elementos fijos que no caben bien en móvil */
   #question-timer-circle,
-  #score-circle {
-    width: 80px;
-    height: 80px;
-    font-size: 0.9rem;
-  }
-
+  #score-circle,
   #qr-container {
-    width: 80px;
-    height: 80px;
-    padding: 8px;
-    bottom: 15px;
-    left: 15px;
+    display: none;
   }
 }
 
-/* ---------------------------------------------------- */
-/* Base del Overlay */
-/* ---------------------------------------------------- */
-.screen-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Permite interactuar con los botones de abajo */
-  z-index: 9998; /* Debe estar debajo de la tarjeta de feedback */
-  transition: background-color 0.5s ease;
-}
-
-/* ---------------------------------------------------- */
-/* 1. EFECTO INCORRECTO: ATENUAR PANTALLA (DIM-SCREEN) */
-/* ---------------------------------------------------- */
-
-.dim-screen {
-  /* Fondo semi-transparente y oscuro para atenuar */
-  background-color: rgba(0, 0, 0, 0.7); /* Opacidad al 70% */
-  transition: background-color 0.5s ease; /* Transición suave */
-}
-
-/* ---------------------------------------------------- */
-/* N. EFECTO: NIEVE CAYENDO LENTAMENTE Y GIRANDO ❄️ */
-/* ---------------------------------------------------- */
-
-.snow-fall-effect {
-  overflow: hidden;
-  pointer-events: none; /* Asegura que la nieve no bloquee clics */
-}
-
-.snow-fall-effect::before,
-.snow-fall-effect::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Copos de Nieve (puntos blancos más grandes) */
-  background-image: radial-gradient(
-      circle at 10% 10%,
-      rgba(255, 255, 255, 0.9) 4px,
-      transparent 4px
-    ),
-    radial-gradient(
-      circle at 20% 40%,
-      rgba(255, 255, 255, 0.9) 3px,
-      transparent 3px
-    ),
-    radial-gradient(
-      circle at 30% 70%,
-      rgba(255, 255, 255, 0.9) 5px,
-      transparent 5px
-    ),
-    radial-gradient(
-      circle at 40% 90%,
-      rgba(255, 255, 255, 0.9) 2px,
-      transparent 2px
-    );
-
-  /* Aumentar el background-size para menos densidad */
-  background-size: 80px 80px;
-  /* Animación más lenta (7s) y con giro (snow-drift) */
-  animation: snow-drift 7s linear infinite;
-}
-
-/* Desplazamiento para hacer la nieve más densa y aleatoria */
-.snow-fall-effect::after {
-  left: 50%; /* Desplazamiento horizontal */
-  top: -50%; /* Empieza más arriba */
-  background-size: 100px 100px;
-  animation-duration: 9s; /* Duración diferente para más aleatoriedad */
-  animation-delay: 1s; /* Empieza un poco después */
-}
-
-@keyframes snow-drift {
-  0% {
-    /* Empieza arriba, sin rotación */
-    transform: translateY(0) rotate(0deg);
+/* Ajustes para móviles muy pequeños (menor o igual a 480px) */
+@media (max-width: 480px) {
+  /* Formulario de datos del jugador */
+  .player-data-form,
+  .modal-content {
+    padding: 16px;
+    max-width: 360px;
   }
-  100% {
-    /* Cae lentamente y rota 360 grados */
-    transform: translateY(100vh) rotate(360deg);
+
+  .player-data-form h2,
+  .modal-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .player-data-form button,
+  .modal-content button {
+    font-size: 1rem;
+    padding: 10px;
   }
 }
 
-/* ---------------------------------------------------- */
-/* 2. EFECTO CORRECTO: ESTRELLAS CAYENDO - MANTENIDO */
-/* ---------------------------------------------------- */
-
-.star-fall-effect {
-  overflow: hidden;
-}
-
-.star-fall-effect::before,
-.star-fall-effect::after {
-  content: '';
-  position: absolute;
-  top: -100px; /* Empieza fuera de pantalla */
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Genera estrellas (puntos amarillos y blancos) */
-  background-image: radial-gradient(circle at 15% 5%, #fff 3px, transparent 3px),
-    radial-gradient(circle at 30% 15%, #ffd700 4px, transparent 4px),
-    radial-gradient(circle at 50% 10%, #fff 2px, transparent 2px),
-    radial-gradient(circle at 70% 20%, #ffd700 4px, transparent 4px),
-    radial-gradient(circle at 90% 5%, #fff 3px, transparent 3px);
-
-  background-size: 150px 150px; /* Tamaño del patrón */
-  animation: star-fall 3s linear forwards;
-  opacity: 1;
-}
-
-/* Desplazar el segundo pseudo-elemento para más densidad y velocidad */
-.star-fall-effect::after {
-  background-image: radial-gradient(
-      circle at 10% 25%,
-      #ffd700 5px,
-      transparent 5px
-    ),
-    radial-gradient(circle at 35% 5%, #fff 3px, transparent 3px),
-    radial-gradient(circle at 60% 25%, #ffd700 4px, transparent 4px),
-    radial-gradient(circle at 85% 10%, #fff 2px, transparent 2px);
-
-  left: 50%;
-  top: -200px;
-  background-size: 180px 180px;
-  animation-duration: 4s;
-  animation-delay: 0.5s;
-}
-
-@keyframes star-fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0; /* Desaparecen al llegar abajo */
-  }
-}
-
-/* Efecto Confeti para respuestas correctas */
-.confetti-effect {
-  pointer-events: none;
-}
-
-.confetti {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  opacity: 0;
-  z-index: 1000;
-}
-
-.confetti.active {
-  opacity: 1;
-  animation: confetti-fall 3s ease-out forwards;
-}
-
-.confetti:nth-child(odd) {
-  background: #ff6b6b;
-  border-radius: 50%;
-}
-
-.confetti:nth-child(even) {
-  background: #4ecdc4;
-  transform: rotate(45deg);
-}
-
-.confetti:nth-child(3n) {
-  background: #45b7d1;
-  border-radius: 2px;
-}
-
-.confetti:nth-child(4n) {
-  background: #f9ca24;
-  border-radius: 50%;
-}
-
-.confetti:nth-child(5n) {
-  background: #6c5ce7;
-  transform: rotate(45deg);
-}
-
-.confetti:nth-child(6n) {
-  background: #a29bfe;
-  border-radius: 2px;
-}
-
-.confetti:nth-child(7n) {
-  background: #fd79a8;
-  border-radius: 50%;
-}
-
-.confetti:nth-child(8n) {
-  background: #00b894;
-  transform: rotate(45deg);
-}
-
-@keyframes confetti-fall {
-  0% {
-    transform: translateY(-100vh) rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg) scale(0.5);
-    opacity: 0;
-  }
-}
-
-/* Animaciones específicas para diferentes posiciones */
-.left-burst {
-  animation: left-burst 3s ease-out forwards;
-}
-
-.right-burst {
-  animation: right-burst 3s ease-out forwards;
-}
-
-@keyframes left-burst {
-  0% {
-    transform: translateY(-20px) translateX(0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  25% {
-    transform: translateY(20vh) translateX(-15vw) rotate(180deg) scale(1.2);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50vh) translateX(-10vw) rotate(360deg) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) translateX(-20vw) rotate(720deg) scale(0.3);
-    opacity: 0;
-  }
-}
-
-@keyframes right-burst {
-  0% {
-    transform: translateY(-20px) translateX(0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  25% {
-    transform: translateY(20vh) translateX(15vw) rotate(180deg) scale(1.2);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50vh) translateX(10vw) rotate(360deg) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) translateX(20vw) rotate(720deg) scale(0.3);
-    opacity: 0;
-  }
-}
-
-/* Efectos adicionales */
-.sparkle {
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
+/* Se han eliminado las media queries repetidas o innecesarias (como la de 600px). */
