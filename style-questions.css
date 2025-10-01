@@ -9,11 +9,11 @@ body {
     rgba(237, 221, 83, 1) 100%
   );
   /* New: use the same background image as the landing page */
-  background-image: url("./assets/images-logos/imagen-back-game.webp");
+  background-image: url('./assets/images-logos/imagen-back-game.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #ffffff; /* Mejor contraste sobre el nuevo fondo */
+  color: #ffffff;
   margin: 0;
   min-height: 100vh;
   display: flex;
@@ -26,9 +26,9 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    "time time"
-    "question question"
-    "image answers";
+    'time time'
+    'question question'
+    'image answers';
   gap: 16px;
   /* Reserva espacio a la izquierda para score, time y QR fijos */
   --left-offset: 260px;
@@ -168,7 +168,7 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   max-width: 420px;
   margin: 0 auto;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   color: #fff;
 }
 
@@ -189,13 +189,18 @@ body {
 }
 
 .modal-content {
-  background: white;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 420px;
   width: 100%;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   color: #3303;
 }
 
@@ -204,7 +209,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   color: #080808;
-  text-shadow: 0 0 5px #080808  ;
+  text-shadow: 0 0 5px #080808;
 }
 
 .modal-content label {
@@ -214,24 +219,29 @@ body {
   font-size: 0.9rem;
 }
 
-.modal-content input[type="text"],
-.modal-content input[type="number"],
+.modal-content input[type='text'],
+.modal-content input[type='number'],
 .modal-content select {
-  width: 100%;
+  width: 90%;
   margin-bottom: 12px;
   padding: 10px;
   border-radius: 10px;
   border: 2px solid #7fff00;
-  background-color: white;
-  color: #7fff00;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
+  color: black;
   font-size: 1rem;
   font-weight: bold;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
-.modal-content input[type="text"]:focus,
-.modal-content input[type="number"]:focus,
+.modal-content input[type='text']:focus,
+.modal-content input[type='number']:focus,
 .modal-content select:focus {
   border-color: #00ff00;
 }
@@ -248,7 +258,7 @@ body {
 }
 
 .modal-content button#submit-player-data {
-  background-color: #4caf50;
+  background-color: #874caf;
   color: white;
 }
 
@@ -282,8 +292,8 @@ body {
   color: #7fff00;
 }
 
-.player-data-form input[type="text"],
-.player-data-form input[type="number"],
+.player-data-form input[type='text'],
+.player-data-form input[type='number'],
 .player-data-form select {
   width: 100%;
   margin-bottom: 12px;
@@ -298,8 +308,8 @@ body {
   transition: border-color 0.3s ease, box-shadow 0.2s ease;
 }
 
-.player-data-form input[type="text"]:focus,
-.player-data-form input[type="number"]:focus,
+.player-data-form input[type='text']:focus,
+.player-data-form input[type='number']:focus,
 .player-data-form select:focus {
   border-color: #00ff00;
   box-shadow: 0 0 8px rgba(0, 255, 0, 0.15);
@@ -394,7 +404,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   font-size: 70px;
   font-weight: bold;
   /* Aplicando las mismas sombras y efectos del H1 */
@@ -438,7 +448,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   /* Aplicando las mismas sombras y efectos del H1 */
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0 0 5px #7fff00, 0 0 10px #fff, 0 0 20px #ff00ff,
@@ -539,17 +549,6 @@ body {
   }
 }
 
-/* ELIMINADO: Bloque 'to' huérfano que no estaba dentro de una regla @keyframes.
-to {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff,
-    0 0 50px #00ffff, 0 0 100px #00ffff;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5);
-}
-*/
-
-/* Mantenemos la animación pulse original como respaldo, pero ya no se usa */
-
 /* Estilos responsive para los nuevos rectángulos en dispositivos móviles */
 @media (max-width: 600px) {
   #question-timer-circle,
@@ -588,7 +587,7 @@ to {
   left: 40px;
   width: 180px;
   height: 180px;
-  background: white;
+  /* background: white; */
   border-radius: 15px;
   padding: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -609,10 +608,10 @@ to {
 @media (max-width: 768px) {
   .container {
     grid-template-areas:
-      "time"
-      "question"
-      "image"
-      "answers";
+      'time'
+      'question'
+      'image'
+      'answers';
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto 1fr;
     gap: 20px;
@@ -688,7 +687,7 @@ to {
 
 .snow-fall-effect::before,
 .snow-fall-effect::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -752,7 +751,7 @@ to {
 
 .star-fall-effect::before,
 .star-fall-effect::after {
-  content: "";
+  content: '';
   position: absolute;
   top: -100px; /* Empieza fuera de pantalla */
   left: 0;
