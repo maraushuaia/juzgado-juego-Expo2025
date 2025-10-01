@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "question": "Si un amigo conduce una moto sin casco, ¿qué deberías hacer?",
+    "question": "Si un amigo conduce una moto sin utilizar casco, ¿qué deberías hacer?",
     "image": "assets/images/ados1.png",
     "qr_code": "assets/images-qr/ados1.png",
     "options": [
-      "Subirte igual, no importa",
-      "Explicarle que es peligroso e ilegal",
-      "Ignorarlo y grabarlo para redes",
-      "Convencerlo de manejar más despacio"
+      "Subirte y pedirle que maneje con precaución",
+      "Grabar un buen video para las redes",
+      "Pedirle que maneje con precaución",
+      "Explicarle que es peligroso e ilegal"
     ],
-    "answer": 1
+    "answer": 3
   },
   {
     "id": 2,
@@ -18,7 +18,7 @@
     "image": "assets/images/ados2.png",
     "qr_code": "assets/images-qr/ados2.png",
     "options": [
-      "Ninguna, si manejas bien",
+      "Ninguna, si manejas despacio y con precaución",
       "Distraerte, generar accidentes y recibir sanciones",
       "Solo que gastas batería",
       "Divertirte mientras manejas"
@@ -44,36 +44,36 @@
     "image": "assets/images/ados4.png",
     "qr_code": "assets/images-qr/ados4.png",
     "options": [
-      "Filmar para publicar en redes",
-      "Acudir a emergencias y dar aviso al 107",
-      "Seguir tu camino como si nada",
+      "Filmar para publicar un video nitido en las redes",
+      "Ayudar si es posible y mover a los heridos a un lugar seguro",
+      "Dar aviso al 103 y ayudar si es posible",
       "Acercarte sin cuidado a los heridos"
     ],
-    "answer": 1
+    "answer": 2
   },
   {
     "id": 5,
-    "question": "¿Qué rol cumple el Juzgado de Faltas en tu ciudad?",
+    "question": "¿Qué rol cumple el Juzgado de Faltas en nuestra ciudad?",
     "image": "assets/images/ados5.png",
     "qr_code": "assets/images-qr/ados5.png",
     "options": [
+      "Asesorar ante accidentes de tránsito",
+      "Recibir el cobro de los impuestos municipales",
       "Aplicar sanciones por incumplimiento de normas",
-      "Repartir becas educativas",
-      "Organizar conciertos",
-      "Regalar equipamiento deportivo"
+      "Defender a los vecinos"
     ],
-    "answer": 0
+    "answer": 2
   },
   {
     "id": 6,
-    "question": "Un conductor estaciona en una rampa para personas con movilidad reducida. ¿Qué falta comete?",
+    "question": "¿Es posible estacionar un momento en una rampa para personas con movilidad reducida?",
     "image": "assets/images/ados6.png",
     "qr_code": "assets/images-qr/ados6.png",
     "options": [
-      "Ninguna, si es por poco tiempo",
-      "Una falta que puede ser sancionada",
-      "Un favor porque la rampa no se usa",
-      "Solo un descuido sin importancia"
+      "Sí, si es por muy poco tiempo",
+      "No, no se puede estacionar bajo ningún concepto",
+      "Sí, si la persona que estaciona es una persona con movilidad reducida",
+      "Sí, si no queda otro lugar donde estacionar"
     ],
     "answer": 1
   },
@@ -97,7 +97,7 @@
     "qr_code": "assets/images-qr/ados8.png",
     "options": [
       "Practicar igual mientras aprendes",
-      "Esperar a obtener la licencia legalmente",
+      "Esperar a estar en condiciones para obtener la licencia legalmente",
       "Conducir solo en calles sin tráfico",
       "Llamar a un amigo para que te preste el auto"
     ],
@@ -118,15 +118,15 @@
   },
   {
     "id": 10,
-    "question": "¿Por qué es importante respetar las normas de tránsito?",
+    "question": "Estás en una encrucidada con semáforo en Rojo, pero un inspector te indica que avances, ¿a quién obedeces?",
     "image": "assets/images/ados10.png",
     "qr_code": "assets/images-qr/ados10.png",
     "options": [
-      "Para evitar multas solamente",
-      "Para garantizar la seguridad de todos",
-      "Porque es obligatorio sin razón",
-      "Para llegar más rápido"
+      "Al semáforo, pues tiene prioridad siempre",
+      "Al inspector, si es que tiene un cartel que indique la instrucción",
+      "Al semáforo, si es que el semáforo está en verde",
+      "Al inspector, porque siempre tiene la autoridad correspondiente"
     ],
-    "answer": 1
+    "answer": 3
   }
 ]

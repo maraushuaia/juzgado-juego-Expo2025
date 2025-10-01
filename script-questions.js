@@ -1,4 +1,6 @@
-// Mejorar estilos del texto de feedback para respuestas incorrectas
+// ==========================================================
+// DECLARACIÓN DE VARIABLES Y ELEMENTOS
+// ==========================================================
 
 const questionText = document.getElementById("question-text");
 const questionImage = document.getElementById("question-image");
@@ -8,27 +10,28 @@ const feedbackEl = document.getElementById("feedback");
 const questionTimerCircleText = document.getElementById(
   "question-timer-circle-text"
 );
-const endGameBtn = document.getElementById("end-game-btn"); // Parece no usarse, considera eliminar si no es necesario.
 const qrImage = document.getElementById("qr-image");
-// Nuevo elemento para el overlay de atenuación y el confeti/lluvia
+// Elemento para el overlay de atenuación y efectos
 const screenOverlay = document.getElementById("screen-overlay");
 
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
-let questionTimeLeft = 20;
+let questionTimeLeft = 30;
 let questionTimerInterval;
 let acceptingAnswers = false;
 
 // Rutas a las imágenes de feedback
 const CORRECT_IMAGE_PATH = "/assets/images-logos/imagen-feliz.png";
-const INCORRECT_IMAGE_PATH = "/assets/images-logos/imagen-triste.png"; // Corregido: .wep a .webp
+const INCORRECT_IMAGE_PATH = "/assets/images-logos/imagen-triste.png";
+
+// ==========================================================
+// FUNCIONES DE UTILIDAD Y FEEDBACK
+// ==========================================================
 
 /**
  * Utility to show a centered feedback "card" overlay with an image and message.
- * isCorrect: boolean - true for correct (happy image, confetti), false for incorrect (sad image, dim screen, rain)
- * message: string - text to display (optional, mainly for showing the correct answer on incorrect)
- * duration: ms to auto-hide (optional, default 2000)
+ * Utiliza las clases CSS: .feedback-card, .feedback-image, .feedback-text-message
  */
 function showFeedbackCard(isCorrect, message = "", duration = 4000) {
   // Limpiar cualquier efecto anterior
@@ -37,10 +40,8 @@ function showFeedbackCard(isCorrect, message = "", duration = 4000) {
 
   // 1. Aplicar efectos de pantalla según el resultado
   if (isCorrect) {
-    // Guirnaldas/Confeti
-    screenOverlay.classList.add("dim-screen"); // Atenuar el fondo
+    screenOverlay.classList.add("dim-screen");
     screenOverlay.classList.add("confetti-effect");
-    // Crear los elementos de confeti dinámicamente
     createConfetti();
   } else {
     // Atenuar la pantalla y efecto de lluvia
@@ -54,51 +55,21 @@ function showFeedbackCard(isCorrect, message = "", duration = 4000) {
     ? "Icono de respuesta correcta"
     : "Icono de respuesta incorrecta";
 
-  // Contenido adicional para la versión incorrecta
+  // Contenido adicional para la versión incorrecta (usa la clase CSS .feedback-text-message)
   const messageHtml = message
-    ? `<div class="feedback-text-message" style="
-           font-weight: 700;
-           color: #d32f2f;
-           font-size: 24px;
-           text-align: center;
-           margin-top: 16px;
-           text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-           background: rgba(255,255,255,0.9);
-           padding: 12px 20px;
-           border-radius: 8px;
-           border: 3px solid #d32f2f;
-           box-shadow: 0 4px 12px rgba(211,47,47,0.2);
-           max-width: 90%;
-           line-height: 1.4;
-        ">
-          ${message}
-        </div>`
+    ? `<div class="feedback-text-message">
+             ${message}
+           </div>`
     : "";
 
   const cardHtml = `
-    <div class="feedback-card" role="status" aria-live="polite" style="
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(237, 221, 83, 1);
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      min-width: 300px;
-      justify-content: center;
-      z-index: 9999;
-    ">
-      <div class="feedback-image" style="width: 720px; height: 720px;">
-        <img src="${imagePath}" alt="${altText}" style="width: 100%; height: 100%; object-fit: contain;">
+      <div class="feedback-card" role="status" aria-live="polite">
+        <div class="feedback-image">
+          <img src="${imagePath}" alt="${altText}">
+        </div>
+        ${messageHtml}
       </div>
-      ${messageHtml}
-    </div>
-  `;
+    `;
 
   feedbackEl.innerHTML = cardHtml;
 
@@ -132,7 +103,7 @@ function createConfetti() {
 }
 
 function createBurst(container, burstIndex) {
-  const particleCount = 20;
+  const particleCount = 30;
 
   for (let i = 0; i < particleCount; i++) {
     const confetti = document.createElement("div");
@@ -167,6 +138,10 @@ function createBurst(container, burstIndex) {
   }
 }
 
+// ==========================================================
+// FUNCIONES DE JUEGO (CARGA, TIEMPO, RESPUESTA)
+// ==========================================================
+
 async function loadQuestions() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
@@ -190,7 +165,7 @@ function startGame() {
 }
 
 function startQuestionTimer() {
-  questionTimeLeft = 20;
+  questionTimeLeft = 30;
   questionTimerCircleText.textContent = questionTimeLeft;
 
   if (questionTimerInterval) {
@@ -247,6 +222,9 @@ function selectAnswer(selectedIndex) {
   const correctIndex = currentQuestion.answer;
   const correctAnswerText = currentQuestion.options[correctIndex];
 
+  // Guardar la respuesta del usuario en el objeto de la pregunta (para el envío en endGame)
+  currentQuestion.userAnswer = selectedIndex;
+
   const buttons = optionsContainer.querySelectorAll("button");
   buttons.forEach((button, index) => {
     button.disabled = true;
@@ -257,7 +235,7 @@ function selectAnswer(selectedIndex) {
     }
   });
 
-  const durationCorrect = 2500; // Aumentamos la duración para disfrutar el confeti
+  const durationCorrect = 2500;
   const durationIncorrect = 6500;
   let delayBeforeNext;
 
@@ -269,7 +247,7 @@ function selectAnswer(selectedIndex) {
     delayBeforeNext = durationCorrect;
   } else {
     // Efecto Dim Screen + Lluvia + Respuesta Correcta
-    const message = `La respuesta correcta era:<br><span style="font-weight: 800; font-size: 30px; color: #d32f2f;">${correctAnswerText}</span>`;
+    const message = `La respuesta correcta era:<br><span class="feedback-text-message-correct-answer">${correctAnswerText}</span>`;
     showFeedbackCard(false, message, durationIncorrect);
     delayBeforeNext = durationIncorrect;
   }
@@ -291,36 +269,49 @@ function nextQuestion() {
   }
 }
 
+// ==========================================================
+// FUNCIÓN DE FINALIZACIÓN Y MODAL (ACTUALIZADA)
+// ==========================================================
+
 function endGame() {
   acceptingAnswers = false;
   localStorage.setItem("finalScore", score);
 
-  // Reemplazamos el formulario embebido por un modal centrado para mejorar la visibilidad
+  // Contenido del modal (¡ACTUALIZADO CON .form-row y .form-column!)
   const modalHtml = `
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <h2 id="modal-title">Datos del jugador</h2>
-      <label for="player-name">Nombre:</label>
-      <input type="text" id="player-name" name="player-name" required />
-      <label for="player-age">Edad:</label>
-      <input type="number" id="player-age" name="player-age" min="1" max="120" required />
-      <label for="player-gender">Género:</label>
-      <select id="player-gender" name="player-gender" required>
-        <option value="">Seleccione...</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-        <option value="Otro">Otro</option>
-        <option value="Prefiero no decir">Prefiero no decir</option>
-      </select>
-      <label for="player-school">Escuela:</label>
-      <input type="text" id="player-school" name="player-school" required />
-      <div class="modal-actions" style="margin-top:12px;">
-        <button id="submit-player-data">Enviar</button>
-        <button id="skip-player-data">Omitir</button>
-      </div>
-    </div>
-  `;
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <h2 id="modal-title">DATOS DEL JUGADOR</h2>
+            
+            <label for="player-name">Nombre:</label>
+            <input type="text" id="player-name" name="player-name" required />
+            
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="player-age">Edad:</label>
+                    <input type="number" id="player-age" name="player-age" min="1" max="120" required />
+                </div>
+                
+                <div class="form-column">
+                    <label for="player-gender">Género:</label>
+                    <select id="player-gender" name="player-gender" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                        <option value="Prefiero no decir">Prefiero no decir</option>
+                    </select>
+                </div>
+            </div>
+            <label for="player-school">Escuela:</label>
+            <input type="text" id="player-school" name="player-school" required />
+            
+            <div class="modal-actions">
+                <button id="submit-player-data">Enviar</button>                
+            </div>
+        </div>
+    `;
 
-  // Crear o reutilizar overlay/modal (guardamos en la variable 'overlay' para mantener compatibilidad con el código siguiente)
+  // Crear o reutilizar overlay (utiliza el ID #modal-overlay del CSS)
   let overlay = document.getElementById("modal-overlay");
   if (!overlay) {
     overlay = document.createElement("div");
@@ -334,38 +325,13 @@ function endGame() {
     feedbackEl.style.display = "none";
   }
 
-  // Estilos del overlay/modal (centra el contenido)
-  Object.assign(overlay.style, {
-    position: "fixed",
-    top: "0",
-    left: "0",
-    right: "0",
-    bottom: "0",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "rgba(0,0,0,0.6)",
-    zIndex: "11000",
-    padding: "20px",
-    overflowY: "auto",
-  });
+  // El #modal-overlay obtendrá sus estilos de CSS.
+  overlay.style.display = "flex";
 
-  // Estilos mínimos para el contenido del modal para que se vea como diálogo
-  // (se colocan en línea para no depender de CSS externo; pueden adaptarse si hay stylesheet)
   const contentWrapper = document.createElement("div");
   contentWrapper.innerHTML = modalHtml;
-  Object.assign(contentWrapper.firstElementChild.style, {
-    background: "#fff",
-    color: "#000",
-    padding: "20px",
-    borderRadius: "8px",
-    maxWidth: "480px",
-    width: "100%",
-    boxSizing: "border-box",
-    boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
-  });
 
-  // Reemplazar el innerHTML del overlay por el contenido ya estilizado
+  // Colocar el contenido en el overlay
   overlay.innerHTML = "";
   overlay.appendChild(contentWrapper.firstElementChild);
 
@@ -375,18 +341,20 @@ function endGame() {
     firstInput.focus();
   }
 
-  // Asegurar que el overlay sea visible
-  overlay.style.display = "flex";
-
+  // Los botones submit/skip deben ser re-obtenidos ya que se inyectaron de nuevo
   const submitBtn = document.getElementById("submit-player-data");
   const skipBtn = document.getElementById("skip-player-data");
 
   const closeAndFinish = () => {
+    // Al cerrar, reestablece el display del overlay
     overlay.style.display = "none";
     overlay.innerHTML = "";
-    // Redirigir a la página de conclusión para mostrar resultados o leaderboard
-    window.location.href = "conclusion.html";
-    // Redirigir a la página de conclusión para mostrar resultados o leaderboard
+
+    // Vuelve a mostrar el feedback (por si se necesita)
+    if (feedbackEl) {
+      feedbackEl.style.display = "";
+    }
+
     window.location.href = "conclusion.html";
   };
 
@@ -404,13 +372,9 @@ function endGame() {
 
     const playerData = { name, age, gender, school, score };
 
-    // Preparar respuestas para enviar
-    // Se intenta obtener la respuesta del jugador desde `selectedAnswer` o `userAnswer`
-    // NOTA: Para que esto funcione, necesitas guardar la respuesta del usuario en el objeto de la pregunta
-    // cuando se selecciona la respuesta en `selectAnswer`. Por ejemplo:
-    // `questions[currentQuestionIndex].userAnswer = selectedIndex;`
+    // Recolectar las respuestas del jugador
     const playerAnswers = questions.map((q, index) => {
-      const given = q.userAnswer ?? null; // Asumiendo que guardaste la respuesta en `userAnswer`
+      const given = q.userAnswer ?? null;
       const correct =
         typeof q.answer !== "undefined" ? q.answer === given : null;
       return {
@@ -447,6 +411,10 @@ function endGame() {
     closeAndFinish();
   });
 }
+
+// ==========================================================
+// LISTENERS Y CONFIGURACIÓN INICIAL
+// ==========================================================
 
 const questionTimerCircle = document.getElementById("question-timer-circle");
 
