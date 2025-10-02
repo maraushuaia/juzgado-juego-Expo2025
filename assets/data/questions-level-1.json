@@ -2,8 +2,8 @@
   {
     "id": 1,
     "question": "¿Podes sacar a pasear libremente a tu mascota por la calle?",
-    "image": "assets/images/ninos_mascota.png",
-    "qr_code": "assets/images-qr/ninos_mascota.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Si, solo si no hay nadie en la calle",
       "No, debe salir con correa",
@@ -15,8 +15,8 @@
   {
     "id": 2,
     "question": "Si tienes menos de 12 años de edad, ¿podes ir en el asiento delantero de un automóvil?",
-    "image": "assets/images/ninos_asiento.png",
-    "qr_code": "assets/images-qr/ninos_asiento.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Sí, si mi mamá o papá maneja",
       "No, si no usas el cinturon de seguridad",
@@ -28,8 +28,8 @@
   {
     "id": 3,
     "question": "Tenes que cruzar rápido la calle, ¿se puede cruzar en cualquier lado?",
-    "image": "assets/images/ninos_cruzar.png",
-    "qr_code": "assets/images-qr/ninos_cruzar.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Sí, con precaución si no vienen autos",
       "No, el único lugar es la senda peatonal",
@@ -41,8 +41,8 @@
   {
     "id": 4,
     "question": "Si te piden que dejes la basura de tu hogar en la vereda, ¿estás cometiendo una falta?",
-    "image": "assets/images/ninos_basura_vereda.png",
-    "qr_code": "assets/images-qr/ninos_basura_vereda.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "No, si la dejas bien ordenada y en bolsa cerrada",
       "Sí, porque la basura debe depositarse en un cesto de basura",
@@ -54,8 +54,8 @@
   {
     "id": 5,
     "question": "Tus padres te van a buscar al colegio en auto, ¿es correcto que te esperen estacionados en doble fila?",
-    "image": "assets/images/ninos_doble_fila.png",
-    "qr_code": "assets/images-qr/ninos_doble_fila.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Sí, si es solo un momento",
       "No, porque no está permitido estacionar en doble fila aún cuando el conductor esté sentado en su asiento",
@@ -67,8 +67,8 @@
   {
     "id": 6,
     "question": "¿Por qué está prohibido vender productos alimenticios vencidos?",
-    "image": "assets/images/ninos_vencidos.png",
-    "qr_code": "assets/images-qr/ninos_vencidos.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Porque no saben ricos",
       "Para prevenir enfermedades y que la población sufra como consecuencia de ello",
@@ -80,8 +80,8 @@
   {
     "id": 7,
     "question": "¿Qué debes hacer si un auto está por doblar y tú quieres cruzar la calle?",
-    "image": "assets/images/ninos6.png",
-    "qr_code": "assets/images-qr/ninos6.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Correr rápido para cruzar antes",
       "Esperar y cruzar cuando sea seguro",
@@ -93,8 +93,8 @@
   {
     "id": 8,
     "question": "¿Qué significa una luz amarilla intermitente en un semáforo?",
-    "image": "assets/images/ninos7.png",
-    "qr_code": "assets/images-qr/ninos7.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Detenerse completamente",
       "Avanzar con precaución",
@@ -106,8 +106,8 @@
   {
     "id": 9,
     "question": "¿Qué debes hacer si ves un accidente en la calle?",
-    "image": "assets/images/ninos8.png",
-    "qr_code": "assets/images-qr/ninos8.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Llamar a un adulto y a emergencias",
       "Seguir jugando sin mirar",
@@ -119,8 +119,8 @@
   {
     "id": 10,
     "question": "Si un peatón está cruzando la calle por la senda peatonal, ¿qué deben hacer los autos?",
-    "image": "assets/images/ninos10.png",
-    "qr_code": "assets/images-qr/ninos10.png",
+    "image": "assets/images/kmal-piensa.png",
+    "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "Tocar bocina para que corra",
       "Detenerse y dejarlo cruzar",
