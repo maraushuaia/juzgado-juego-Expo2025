@@ -64,7 +64,7 @@ body {
 
   /* Fondo principal con fallback de gradiente */
   background: var(--bg-form-modal); /* Usando gradiente como fallback */
-  background-image: url("./assets/images-logos/imagen-back-game.webp");
+  background-image: url('./assets/images-logos/imagen-back-game.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -175,7 +175,7 @@ body {
   height: 90px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 .option-btn:hover {
@@ -210,7 +210,7 @@ body {
   border-radius: 10px;
   max-width: 680px;
   width: 100%;
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   box-sizing: border-box; /* Asegura padding consistente */
 }
 
@@ -249,11 +249,11 @@ body {
 }
 
 /* Input/Select - Estilos Base (sin width) */
-.player-data-form input[type="text"],
-.player-data-form input[type="number"],
+.player-data-form input[type='text'],
+.player-data-form input[type='number'],
 .player-data-form select,
-.modal-content input[type="text"],
-.modal-content input[type="number"],
+.modal-content input[type='text'],
+.modal-content input[type='number'],
 .modal-content select {
   margin-bottom: 12px;
   padding: 10px;
@@ -383,7 +383,7 @@ body {
   z-index: 1000;
 
   /* Estilos visuales comunes */
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -614,7 +614,7 @@ body {
 .star-fall-effect::after,
 .rain-effect::before, /* Asumo que 'rain-effect' usa pseudo-elementos */
 .rain-effect::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   width: 100%;

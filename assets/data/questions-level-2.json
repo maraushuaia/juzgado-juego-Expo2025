@@ -5,10 +5,10 @@
     "image": "assets/images/ados1.png",
     "qr_code": "assets/images-qr/ados1.png",
     "options": [
-      "Subirte y pedirle que maneje con precaución",
-      "Grabar un buen video para las redes",
-      "Pedirle que maneje con precaución",
-      "Explicarle que es peligroso e ilegal"
+      "A - Subirte y pedirle que maneje con precaución",
+      "B - Grabar un buen video para las redes",
+      "C - Pedirle que maneje con precaución",
+      "D - Explicarle que es peligroso e ilegal"
     ],
     "answer": 3
   },
@@ -18,10 +18,10 @@
     "image": "assets/images/ados2.png",
     "qr_code": "assets/images-qr/ados2.png",
     "options": [
-      "Ninguna, si manejas despacio y con precaución",
-      "Distraerte, generar accidentes y recibir sanciones",
-      "Solo que gastas batería",
-      "Divertirte mientras manejas"
+      "A - Ninguna, si manejas despacio y con precaución",
+      "B - Distraerte, generar accidentes y recibir sanciones",
+      "C -Solo que gastas batería",
+      "D - Divertirte mientras manejas"
     ],
     "answer": 1
   },
@@ -31,10 +31,10 @@
     "image": "assets/images/ados3.png",
     "qr_code": "assets/images-qr/ados3.png",
     "options": [
-      "La de tránsito",
-      "La ordenanza de ruidos molestos",
-      "Los códigos de vestimenta",
-      "La ley de residuos"
+      "A - La de tránsito",
+      "B - La ordenanza de ruidos molestos",
+      "C - Los códigos de vestimenta",
+      "D - La ley de residuos"
     ],
     "answer": 1
   },
@@ -44,10 +44,10 @@
     "image": "assets/images/ados4.png",
     "qr_code": "assets/images-qr/ados4.png",
     "options": [
-      "Filmar para publicar un video nitido en las redes",
-      "Ayudar si es posible y mover a los heridos a un lugar seguro",
-      "Dar aviso al 103 y ayudar si es posible",
-      "Acercarte sin cuidado a los heridos"
+      "A - Filmar para publicar un video nitido en las redes",
+      "B - Ayudar si es posible y mover a los heridos a un lugar seguro",
+      "C - Dar aviso al 103 y ayudar si es posible",
+      "D - Acercarte sin cuidado a los heridos"
     ],
     "answer": 2
   },
@@ -57,10 +57,10 @@
     "image": "assets/images/ados5.png",
     "qr_code": "assets/images-qr/ados5.png",
     "options": [
-      "Asesorar ante accidentes de tránsito",
-      "Recibir el cobro de los impuestos municipales",
-      "Aplicar sanciones por incumplimiento de normas",
-      "Defender a los vecinos"
+      "A - Asesorar ante accidentes de tránsito",
+      "B - Recibir el cobro de los impuestos municipales",
+      "C - Aplicar sanciones por incumplimiento de normas",
+      "D - Defender a los vecinos"
     ],
     "answer": 2
   },
@@ -70,10 +70,10 @@
     "image": "assets/images/ados6.png",
     "qr_code": "assets/images-qr/ados6.png",
     "options": [
-      "Sí, si es por muy poco tiempo",
-      "No, no se puede estacionar bajo ningún concepto",
-      "Sí, si la persona que estaciona es una persona con movilidad reducida",
-      "Sí, si no queda otro lugar donde estacionar"
+      "A - Sí, si es por muy poco tiempo",
+      "B - No, no se puede estacionar bajo ningún concepto",
+      "C - Sí, si la persona que estaciona es una persona con movilidad reducida",
+      "D - Sí, si no queda otro lugar donde estacionar"
     ],
     "answer": 1
   },
@@ -83,10 +83,10 @@
     "image": "assets/images/ados7.png",
     "qr_code": "assets/images-qr/ados7.png",
     "options": [
-      "Precaución, puedes seguir",
-      "Alto total, no puedes avanzar",
-      "Avanza más rápido",
-      "Solo es para peatones"
+      "A - Precaución, puedes seguir",
+      "B - Alto total, no puedes avanzar",
+      "C - Avanza más rápido",
+      "D - Solo es para peatones"
     ],
     "answer": 1
   },
@@ -96,10 +96,10 @@
     "image": "assets/images/ados8.png",
     "qr_code": "assets/images-qr/ados8.png",
     "options": [
-      "Practicar igual mientras aprendes",
-      "Esperar a estar en condiciones para obtener la licencia legalmente",
-      "Conducir solo en calles sin tráfico",
-      "Llamar a un amigo para que te preste el auto"
+      "A - Practicar igual mientras aprendes",
+      "B - Esperar a estar en condiciones para obtener la licencia legalmente",
+      "C - Conducir solo en calles sin tráfico",
+      "D - Llamar a un amigo para que te preste el auto"
     ],
     "answer": 1
   },
@@ -109,10 +109,10 @@
     "image": "assets/images/ados9.png",
     "qr_code": "assets/images-qr/ados9.png",
     "options": [
-      "Ignorarlo y seguir de largo",
-      "Detenerte y colaborar mostrando tu documentación",
-      "Discutir sin mostrar papeles",
-      "Acelerar para no perder tiempo"
+      "A - Ignorarlo y seguir de largo",
+      "B - Detenerte y colaborar mostrando tu documentación",
+      "C - Discutir sin mostrar papeles",
+      "D - Acelerar para no perder tiempo"
     ],
     "answer": 1
   },
@@ -122,10 +122,10 @@
     "image": "assets/images/ados10.png",
     "qr_code": "assets/images-qr/ados10.png",
     "options": [
-      "Al semáforo, pues tiene prioridad siempre",
-      "Al inspector, si es que tiene un cartel que indique la instrucción",
-      "Al semáforo, si es que el semáforo está en verde",
-      "Al inspector, porque siempre tiene la autoridad correspondiente"
+      "A - Al semáforo, pues tiene prioridad siempre",
+      "B - Al inspector, si es que tiene un cartel que indique la instrucción",
+      "C - Al semáforo, si es que el semáforo está en verde",
+      "D - Al inspector, porque siempre tiene la autoridad correspondiente"
     ],
     "answer": 3
   }

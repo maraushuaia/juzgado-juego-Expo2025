@@ -5,10 +5,10 @@
     "image": "assets/images/ninos_mascota.png",
     "qr_code": "assets/images-qr/ninos_mascota.png",
     "options": [
-      "Si, solo si no hay nadie en la calle",
-      "No, debe salir con correa",
-      "Si, puede ir suelto si obedece",
-      "No, debe salir con bozal y correa"
+      "A - Si, solo si no hay nadie en la calle",
+      "B - No, debe salir con correa",
+      "C - Si, puede ir suelto si obedece",
+      "D - No, debe salir con bozal y correa"
     ],
     "answer": 3
   },
@@ -18,10 +18,10 @@
     "image": "assets/images/ninos_asiento.png",
     "qr_code": "assets/images-qr/ninos_asiento.png",
     "options": [
-      "Sí, si mi mamá o papá maneja",
-      "No, si no usas el cinturon de seguridad",
-      "Si, solo si el auto está lleno",
-      "No, los menores de 12 años no pueden ir adelante"
+      "A - Sí, si mi mamá o papá maneja",
+      "B - No, si no usas el cinturon de seguridad",
+      "C - Si, solo si el auto está lleno",
+      "D - No, los menores de 12 años no pueden ir adelante"
     ],
     "answer": 3
   },
@@ -31,10 +31,10 @@
     "image": "assets/images/ninos_cruzar.png",
     "qr_code": "assets/images-qr/ninos_cruzar.png",
     "options": [
-      "Sí, con precaución si no vienen autos",
-      "No, el único lugar es la senda peatonal",
-      "Si, siempre que te acompañe un adulto",
-      "No, si es una avenida, pero en otras calles sí"
+      "A - Sí, con precaución si no vienen autos",
+      "B No, el único lugar es la senda peatonal",
+      "C - Sí, siempre que te acompañe un adulto",
+      "D - No, si es una avenida, pero en otras calles sí"
     ],
     "answer": 1
   },
@@ -44,10 +44,10 @@
     "image": "assets/images/ninos_basura_vereda.png",
     "qr_code": "assets/images-qr/ninos_basura_vereda.png",
     "options": [
-      "No, si la dejas bien ordenada y en bolsa cerrada",
-      "Sí, porque la basura debe depositarse en un cesto de basura",
-      "No, si quién te lo pide son tus padres",
-      "Si, si la basura está mucho tiempo afuera"
+      "A - No, si la dejas bien ordenada y en bolsa cerrada",
+      "B - Sí, porque la basura debe depositarse en un cesto de basura",
+      "C - No, si quién te lo pide son tus padres",
+      "D - Si, si la basura está mucho tiempo afuera"
     ],
     "answer": 1
   },
@@ -57,10 +57,10 @@
     "image": "assets/images/ninos_doble_fila.png",
     "qr_code": "assets/images-qr/ninos_doble_fila.png",
     "options": [
-      "Sí, si es solo un momento",
-      "No, porque no está permitido estacionar en doble fila aún cuando el conductor esté sentado en su asiento",
-      "Si, solo si no hay otro lugar donde estacionar",
-      "No, sin prender las balizas"
+      "A - Sí, si es solo un momento",
+      "B - No, porque no está permitido estacionar en doble fila aún cuando el conductor esté sentado en su asiento",
+      "C - Si, solo si no hay otro lugar donde estacionar",
+      "D - No, sin prender las balizas"
     ],
     "answer": 1
   },
@@ -70,10 +70,10 @@
     "image": "assets/images/ninos_vencidos.png",
     "qr_code": "assets/images-qr/ninos_vencidos.png",
     "options": [
-      "Porque no saben ricos",
-      "Para prevenir enfermedades y que la población sufra como consecuencia de ello",
-      "Porque la fecha es solo una sugerencia",
-      "Para que la gente compre productos nuevos"
+      "A - Porque no saben ricos",
+      "B - Para prevenir enfermedades y que la población sufra como consecuencia de ello",
+      "C - Porque la fecha es solo una sugerencia",
+      "D - Para que la gente compre productos nuevos"
     ],
     "answer": 1
   },
@@ -83,10 +83,10 @@
     "image": "assets/images/ninos6.png",
     "qr_code": "assets/images-qr/ninos6.png",
     "options": [
-      "Correr rápido para cruzar antes",
-      "Esperar y cruzar cuando sea seguro",
-      "Pasar sin mirar",
-      "Hacer señas para que frene y puedas cruzar"
+      "A - Correr rápido para cruzar antes",
+      "B - Esperar y cruzar cuando sea seguro",
+      "C - Pasar sin mirar",
+      "D - Hacer señas para que frene y puedas cruzar"
     ],
     "answer": 1
   },
@@ -96,10 +96,10 @@
     "image": "assets/images/ninos7.png",
     "qr_code": "assets/images-qr/ninos7.png",
     "options": [
-      "Detenerse completamente",
-      "Avanzar con precaución",
-      "Acelerar para pasar rápido",
-      "Ignorar la señal"
+      "A - Detenerse completamente",
+      "B - Avanzar con precaución",
+      "C - Acelerar para pasar rápido",
+      "D - Ignorar la señal"
     ],
     "answer": 1
   },
@@ -109,10 +109,10 @@
     "image": "assets/images/ninos8.png",
     "qr_code": "assets/images-qr/ninos8.png",
     "options": [
-      "Llamar a un adulto y a emergencias",
-      "Seguir jugando sin mirar",
-      "Tomar fotos y subirlas a internet",
-      "Intentar mover a los heridos sin cuidado"
+      "A - Llamar a un adulto y a emergencias",
+      "B - Seguir jugando sin mirar",
+      "C - Tomar fotos y subirlas a internet",
+      "D - Intentar mover a los heridos sin cuidado"
     ],
     "answer": 0
   },
@@ -122,10 +122,10 @@
     "image": "assets/images/ninos10.png",
     "qr_code": "assets/images-qr/ninos10.png",
     "options": [
-      "Tocar bocina para que corra",
-      "Detenerse y dejarlo cruzar",
-      "Pasar rápido para no esperar",
-      "Ignorarlo y seguir"
+      "A - Tocar bocina para que corra",
+      "B - Detenerse y dejarlo cruzar",
+      "C - Pasar rápido para no esperar",
+      "D - Ignorarlo y seguir"
     ],
     "answer": 1
   }
