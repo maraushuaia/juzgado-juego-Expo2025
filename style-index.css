@@ -32,6 +32,7 @@ body {
 
 #start-screen img {
   max-width: 480px;
+  max-height: 30em;
   margin-bottom: 20px;
   border-radius: 15px;
   cursor: pointer;

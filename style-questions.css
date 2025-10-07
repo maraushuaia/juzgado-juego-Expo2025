@@ -64,7 +64,7 @@ body {
 
   /* Fondo principal con fallback de gradiente */
   background: var(--bg-form-modal); /* Usando gradiente como fallback */
-  background-image: url('./assets/images-logos/imagen-back-game.webp');
+  background-image: url("./assets/images-logos/imagen-back-game.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -76,9 +76,9 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    'time time'
-    'question question'
-    'image answers';
+    "time time"
+    "question question"
+    "image answers";
   gap: 16px;
   margin-left: var(--left-offset);
   width: calc(100vw - var(--left-offset) - 40px);
@@ -124,14 +124,14 @@ body {
   background: var(--color-primary);
   padding: 10px;
   border-radius: 10px;
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: left;
   color: var(--color-text-light);
-  min-height: 120px;
+  min-height: 3em;
 }
 
 /* Sección de Imagen */
@@ -140,12 +140,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  margin-bottom: 2em;
 }
 
 .image img {
   max-width: 100%;
-  max-height: 42em;
+  max-height: 28em;
   border-radius: 10px;
 }
 
@@ -156,7 +156,8 @@ body {
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  height: 100%;
+  padding-top: 1em;
+  height: 60%;
   justify-content: space-around;
 }
 
@@ -171,7 +172,7 @@ body {
   color: var(--color-text-light);
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  height: 90px;
+  height: 4em;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -209,7 +210,7 @@ body {
   border-radius: 10px;
   max-width: 680px;
   width: 100%;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   box-sizing: border-box; /* Asegura padding consistente */
 }
 
@@ -248,11 +249,11 @@ body {
 }
 
 /* Input/Select - Estilos Base (sin width) */
-.player-data-form input[type='text'],
-.player-data-form input[type='number'],
+.player-data-form input[type="text"],
+.player-data-form input[type="number"],
 .player-data-form select,
-.modal-content input[type='text'],
-.modal-content input[type='number'],
+.modal-content input[type="text"],
+.modal-content input[type="number"],
 .modal-content select {
   margin-bottom: 12px;
   padding: 10px;
@@ -382,7 +383,7 @@ body {
   z-index: 1000;
 
   /* Estilos visuales comunes */
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -442,7 +443,8 @@ body {
 }
 
 /* QR Code Container */
-#qr-container {
+/* #qr-container {
+display: none;
   position: fixed;
   bottom: 40px;
   left: 40px;
@@ -459,11 +461,12 @@ body {
 }
 
 #qr-container img {
+ 
   width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 8px;
-}
+} */
 
 /*==============================================
    ANIMACIONES
@@ -571,7 +574,7 @@ body {
 .feedback-image {
   /* width: 480px;   */
   max-width: 90vw;
-  max-height: 70vh;
+  max-height: 60vh;
 }
 
 .feedback-image img {
@@ -612,7 +615,7 @@ body {
 .star-fall-effect::after,
 .rain-effect::before, /* Asumo que 'rain-effect' usa pseudo-elementos */
 .rain-effect::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 100%;
@@ -722,10 +725,10 @@ body {
   /* Contenedor principal para móviles */
   .container {
     grid-template-areas:
-      'time'
-      'question'
-      'image'
-      'answers';
+      "time"
+      "question"
+      "image"
+      "answers";
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto 1fr;
     gap: 20px;

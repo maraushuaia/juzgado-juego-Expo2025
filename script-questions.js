@@ -2,13 +2,13 @@
 // DECLARACIÓN DE VARIABLES Y ELEMENTOS
 // ==========================================================
 
-const questionText = document.getElementById('question-text');
-const questionImage = document.getElementById('question-image');
-const optionsContainer = document.getElementById('options-container');
-const scoreEl = document.getElementById('score');
-const feedbackEl = document.getElementById('feedback');
+const questionText = document.getElementById("question-text");
+const questionImage = document.getElementById("question-image");
+const optionsContainer = document.getElementById("options-container");
+const scoreEl = document.getElementById("score");
+const feedbackEl = document.getElementById("feedback");
 const questionTimerCircleText = document.getElementById(
-  'question-timer-circle-text'
+  "question-timer-circle-text"
 );
 const qrImage = document.getElementById("qr-image");
 // Elemento para el overlay de atenuación y efectos
@@ -33,10 +33,10 @@ const INCORRECT_IMAGE_PATH = "/assets/images-logos/imagen-triste.png";
  * Utility to show a centered feedback "card" overlay with an image and message.
  * Utiliza las clases CSS: .feedback-card, .feedback-image, .feedback-text-message
  */
-function showFeedbackCard(isCorrect, message = '', duration = 4000) {
+function showFeedbackCard(isCorrect, message = "", duration = 4000) {
   // Limpiar cualquier efecto anterior
-  screenOverlay.className = 'screen-overlay';
-  feedbackEl.innerHTML = '';
+  screenOverlay.className = "screen-overlay";
+  feedbackEl.innerHTML = "";
 
   // 1. Aplicar efectos de pantalla según el resultado
   if (isCorrect) {
@@ -45,15 +45,15 @@ function showFeedbackCard(isCorrect, message = '', duration = 4000) {
     createConfetti();
   } else {
     // Atenuar la pantalla y efecto de lluvia
-    screenOverlay.classList.add('dim-screen');
-    screenOverlay.classList.add('rain-effect');
+    screenOverlay.classList.add("dim-screen");
+    screenOverlay.classList.add("rain-effect");
   }
 
   // 2. Crear el contenido de la tarjeta de feedback
   const imagePath = isCorrect ? CORRECT_IMAGE_PATH : INCORRECT_IMAGE_PATH;
   const altText = isCorrect
-    ? 'Icono de respuesta correcta'
-    : 'Icono de respuesta incorrecta';
+    ? "Icono de respuesta correcta"
+    : "Icono de respuesta incorrecta";
 
   // Contenido adicional para la versión incorrecta (usa la clase CSS .feedback-text-message)
   const messageHtml = message
@@ -76,11 +76,11 @@ function showFeedbackCard(isCorrect, message = '', duration = 4000) {
   // 3. Ocultar la tarjeta y remover los efectos
   if (duration > 0) {
     setTimeout(() => {
-      feedbackEl.innerHTML = '';
-      screenOverlay.className = 'screen-overlay';
+      feedbackEl.innerHTML = "";
+      screenOverlay.className = "screen-overlay";
 
       // Eliminar cualquier confeti que pudiera quedar en el DOM
-      const existingConfetti = screenOverlay.querySelectorAll('.confetti');
+      const existingConfetti = screenOverlay.querySelectorAll(".confetti");
       existingConfetti.forEach((confetti) => confetti.remove());
     }, duration);
   }
@@ -91,7 +91,7 @@ function showFeedbackCard(isCorrect, message = '', duration = 4000) {
  */
 function createConfetti() {
   // Limpiar confeti anterior
-  const existingConfetti = screenOverlay.querySelectorAll('.confetti');
+  const existingConfetti = screenOverlay.querySelectorAll(".confetti");
   existingConfetti.forEach((confetti) => confetti.remove());
 
   // Crear múltiples ráfagas
@@ -106,8 +106,8 @@ function createBurst(container, burstIndex) {
   const particleCount = 30;
 
   for (let i = 0; i < particleCount; i++) {
-    const confetti = document.createElement('div');
-    confetti.className = 'confetti';
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
 
     // Posición inicial aleatoria
     const isLeft = Math.random() < 0.5;
@@ -117,23 +117,23 @@ function createBurst(container, burstIndex) {
 
     const startY = Math.random() * 20 + 10; // 10-30% desde arriba
 
-    confetti.style.left = startX + '%';
-    confetti.style.top = startY + '%';
+    confetti.style.left = startX + "%";
+    confetti.style.top = startY + "%";
 
     // Añadir clase de animación
-    confetti.classList.add(isLeft ? 'left-burst' : 'right-burst');
+    confetti.classList.add(isLeft ? "left-burst" : "right-burst");
 
     // Delay aleatorio para efecto más natural
-    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+    confetti.style.animationDelay = Math.random() * 0.5 + "s";
 
     // Duración aleatoria
-    confetti.style.animationDuration = Math.random() * 1 + 2.5 + 's';
+    confetti.style.animationDuration = Math.random() * 1 + 2.5 + "s";
 
     container.appendChild(confetti);
 
     // Activar animación
     setTimeout(() => {
-      confetti.classList.add('active');
+      confetti.classList.add("active");
     }, 10);
   }
 }
@@ -146,12 +146,12 @@ async function loadQuestions() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const levelFile =
-      urlParams.get('level') || 'assets/data/questions-level-1.json';
+      urlParams.get("level") || "assets/data/questions-level-1.json";
     const response = await fetch(levelFile);
     questions = await response.json();
   } catch (error) {
     console.error(error);
-    showFeedbackCard(false, 'Error al cargar las preguntas.', 3000);
+    showFeedbackCard(false, "Error al cargar las preguntas.", 3000);
   }
 }
 
@@ -178,7 +178,7 @@ function startQuestionTimer() {
     if (questionTimeLeft <= 0) {
       clearInterval(questionTimerInterval);
       acceptingAnswers = false;
-      showFeedbackCard(false, '¡Tiempo agotado!', 2500);
+      showFeedbackCard(false, "¡Tiempo agotado!", 2500);
       setTimeout(() => {
         nextQuestion();
       }, 1500);
@@ -195,22 +195,22 @@ function loadQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   questionText.textContent = currentQuestion.question;
   questionImage.src = currentQuestion.image;
-  questionImage.alt = currentQuestion.alt || 'Imagen de la pregunta';
+  questionImage.alt = currentQuestion.alt || "Imagen de la pregunta";
 
-  qrImage.src = currentQuestion.qr_code;
-  qrImage.alt = `Código QR para la pregunta ${currentQuestion.id}`;
+  // qrImage.src = currentQuestion.qr_code;
+  // qrImage.alt = `Código QR para la pregunta ${currentQuestion.id}`;
 
-  optionsContainer.innerHTML = '';
+  optionsContainer.innerHTML = "";
   currentQuestion.options.forEach((option, index) => {
-    const button = document.createElement('button');
-    button.classList.add('option-btn');
+    const button = document.createElement("button");
+    button.classList.add("option-btn");
     button.textContent = option;
-    button.addEventListener('click', () => selectAnswer(index));
+    button.addEventListener("click", () => selectAnswer(index));
     optionsContainer.appendChild(button);
   });
 
-  feedbackEl.innerHTML = '';
-  screenOverlay.className = 'screen-overlay'; // Asegurar que no hay efectos al cargar
+  feedbackEl.innerHTML = "";
+  screenOverlay.className = "screen-overlay"; // Asegurar que no hay efectos al cargar
   acceptingAnswers = true;
 }
 
@@ -229,9 +229,9 @@ function selectAnswer(selectedIndex) {
   buttons.forEach((button, index) => {
     button.disabled = true;
     if (index === correctIndex) {
-      button.classList.add('correct');
+      button.classList.add("correct");
     } else if (index === selectedIndex) {
-      button.classList.add('incorrect');
+      button.classList.add("incorrect");
     }
   });
 
@@ -243,7 +243,7 @@ function selectAnswer(selectedIndex) {
     score++;
     scoreEl.textContent = score;
     // Efecto Confeti
-    showFeedbackCard(true, '', durationCorrect);
+    showFeedbackCard(true, "", durationCorrect);
     delayBeforeNext = durationCorrect;
   } else {
     // Efecto Dim Screen + Lluvia + Respuesta Correcta
@@ -275,7 +275,7 @@ function nextQuestion() {
 
 function endGame() {
   acceptingAnswers = false;
-  localStorage.setItem('finalScore', score);
+  localStorage.setItem("finalScore", score);
 
   // Contenido del modal (¡ACTUALIZADO CON .form-row y .form-column!)
   const modalHtml = `
@@ -314,15 +314,15 @@ function endGame() {
   // Crear o reutilizar overlay (utiliza el ID #modal-overlay del CSS)
   let overlay = document.getElementById("modal-overlay");
   if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.id = 'modal-overlay';
+    overlay = document.createElement("div");
+    overlay.id = "modal-overlay";
     document.body.appendChild(overlay);
   }
 
   // Ocultar #feedback si existe para que no bloquee la interacción del modal
-  const feedbackEl = document.getElementById('feedback');
+  const feedbackEl = document.getElementById("feedback");
   if (feedbackEl) {
-    feedbackEl.style.display = 'none';
+    feedbackEl.style.display = "none";
   }
 
   // El #modal-overlay obtendrá sus estilos de CSS.
@@ -336,7 +336,7 @@ function endGame() {
   overlay.appendChild(contentWrapper.firstElementChild);
 
   // Para accesibilidad, mover el foco al primer campo
-  const firstInput = overlay.querySelector('#player-name');
+  const firstInput = overlay.querySelector("#player-name");
   if (firstInput) {
     firstInput.focus();
   }
@@ -358,25 +358,25 @@ function endGame() {
     window.location.href = "conclusion.html";
   };
 
-  submitBtn.addEventListener('click', () => {
-    const name = document.getElementById('player-name').value.trim();
-    const ageVal = document.getElementById('player-age').value;
+  submitBtn.addEventListener("click", () => {
+    const name = document.getElementById("player-name").value.trim();
+    const ageVal = document.getElementById("player-age").value;
     const age = ageVal ? parseInt(ageVal, 10) : null;
-    const gender = document.getElementById('player-gender').value;
-    const school = document.getElementById('player-school').value.trim();
+    const gender = document.getElementById("player-gender").value;
+    const school = document.getElementById("player-school").value.trim();
 
     if (!name || !age || !gender || !school) {
-      alert('Por favor, complete todos los campos.');
+      alert("Por favor, complete todos los campos.");
       return;
     }
 
-    const playerData = {name, age, gender, school, score};
+    const playerData = { name, age, gender, school, score };
 
     // Recolectar las respuestas del jugador
     const playerAnswers = questions.map((q, index) => {
       const given = q.userAnswer ?? null;
       const correct =
-        typeof q.answer !== 'undefined' ? q.answer === given : null;
+        typeof q.answer !== "undefined" ? q.answer === given : null;
       return {
         questionId: q.id ?? index + 1,
         answerGiven: given,
@@ -385,29 +385,29 @@ function endGame() {
     });
 
     // Enviar datos al backend
-    fetch('save_player_data.php', {
-      method: 'POST',
+    fetch("save_player_data.php", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({playerData, playerAnswers}),
+      body: JSON.stringify({ playerData, playerAnswers }),
     })
       .then((response) => response.json())
       .then((data) => {
         if (data && data.success) {
-          alert('Gracias por jugar. Sus datos han sido registrados.');
+          alert("Gracias por jugar. Sus datos han sido registrados.");
           closeAndFinish();
         } else {
-          alert('Error al guardar los datos. Intente nuevamente.');
+          alert("Error al guardar los datos. Intente nuevamente.");
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
-        alert('Error de conexión. Intente nuevamente.');
+        console.error("Error:", error);
+        alert("Error de conexión. Intente nuevamente.");
       });
   });
 
-  skipBtn.addEventListener('click', () => {
+  skipBtn.addEventListener("click", () => {
     closeAndFinish();
   });
 }
@@ -420,12 +420,12 @@ const questionTimerCircle = document.getElementById("question-timer-circle");
 
 // Asegúrate de que este elemento exista en tu HTML, si no, estos listeners darán error.
 if (questionTimerCircle) {
-  questionTimerCircle.addEventListener('click', () => {
+  questionTimerCircle.addEventListener("click", () => {
     endGame();
   });
 
-  questionTimerCircle.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+  questionTimerCircle.addEventListener("keypress", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
       endGame();
     }
   });
@@ -435,17 +435,17 @@ if (questionTimerCircle) {
 function setBackgroundByLevel() {
   const urlParams = new URLSearchParams(window.location.search);
   const levelFile =
-    urlParams.get('level') || 'assets/data/questions-level-1.json';
+    urlParams.get("level") || "assets/data/questions-level-1.json";
 
   // Determinar el nivel basado en el archivo de preguntas
   let backgroundImage;
-  if (levelFile.includes('level-1')) {
-    backgroundImage = '/assets/images-logos/imagen-back-game-inicial.webp';
-  } else if (levelFile.includes('level-2')) {
-    backgroundImage = '/assets/images-logos/imagen-back-game-medio.webp';
+  if (levelFile.includes("level-1")) {
+    backgroundImage = "/assets/images-logos/imagen-back-game-inicial.webp";
+  } else if (levelFile.includes("level-2")) {
+    backgroundImage = "/assets/images-logos/imagen-back-game-medio.webp";
   } else {
     // Fallback a la imagen del nivel inicial
-    backgroundImage = '/assets/images-logos/imagen-back-game-inicial.webp';
+    backgroundImage = "/assets/images-logos/imagen-back-game-inicial.webp";
   }
 
   // Aplicar la imagen de fondo al body
@@ -455,7 +455,7 @@ function setBackgroundByLevel() {
   );
 }
 
-window.addEventListener('load', async () => {
+window.addEventListener("load", async () => {
   setBackgroundByLevel(); // Establecer el fondo según el nivel
   await loadQuestions();
   startGame();
