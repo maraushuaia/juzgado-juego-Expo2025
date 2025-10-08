@@ -2,7 +2,7 @@
   {
     "id": 1,
     "question": "Si un amigo conduce una moto sin utilizar casco, ¿qué deberías hacer?",
-    "image": "assets/images/ados1.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados1.png",
     "options": [
       "A - Subirte y pedirle que maneje con precaución",
@@ -15,7 +15,7 @@
   {
     "id": 2,
     "question": "¿Qué consecuencias puede tener usar el celular mientras conduces?",
-    "image": "assets/images/ados2.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados2.png",
     "options": [
       "A - Ninguna, si manejas despacio y con precaución",
@@ -27,11 +27,11 @@
   },
   {
     "id": 3,
-    "question": "Si participas en una fiesta con música muy fuerte de noche, ¿qué norma puedes estar incumpliendo?",
-    "image": "assets/images/ados3.png",
+    "question": "Si participas en una fiesta con música muy fuerte en la noche, ¿qué norma podes estar incumpliendo?",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados3.png",
     "options": [
-      "A - La de tránsito",
+      "A - La de edificación",
       "B - La ordenanza de ruidos molestos",
       "C - Los códigos de vestimenta",
       "D - La ley de residuos"
@@ -41,7 +41,7 @@
   {
     "id": 4,
     "question": "¿Qué debes hacer si presencias un choque en la vía pública?",
-    "image": "assets/images/ados4.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados4.png",
     "options": [
       "A - Filmar para publicar un video nitido en las redes",
@@ -54,25 +54,25 @@
   {
     "id": 5,
     "question": "¿Qué rol cumple el Juzgado de Faltas en nuestra ciudad?",
-    "image": "assets/images/ados5.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados5.png",
     "options": [
       "A - Asesorar ante accidentes de tránsito",
       "B - Recibir el cobro de los impuestos municipales",
-      "C - Aplicar sanciones por incumplimiento de normas",
+      "C - Aplicar sanciones por el incumplimiento de las normas",
       "D - Defender a los vecinos"
     ],
     "answer": 2
   },
   {
     "id": 6,
-    "question": "¿Es posible estacionar un momento en una rampa para personas con movilidad reducida?",
-    "image": "assets/images/ados6.png",
+    "question": "¿Es posible estacionar un momento en una rampa para personas con discapacidad?",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados6.png",
     "options": [
       "A - Sí, si es por muy poco tiempo",
       "B - No, no se puede estacionar bajo ningún concepto",
-      "C - Sí, si la persona que estaciona es una persona con movilidad reducida",
+      "C - Sí, si la persona que estaciona posee habilitación municipal vigente escrita",
       "D - Sí, si no queda otro lugar donde estacionar"
     ],
     "answer": 1
@@ -80,7 +80,7 @@
   {
     "id": 7,
     "question": "¿Qué significa la luz roja en un semáforo?",
-    "image": "assets/images/ados7.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados7.png",
     "options": [
       "A - Precaución, puedes seguir",
@@ -93,7 +93,7 @@
   {
     "id": 8,
     "question": "¿Qué debes hacer si quieres conducir cuando todavía no tienes licencia?",
-    "image": "assets/images/ados8.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados8.png",
     "options": [
       "A - Practicar igual mientras aprendes",
@@ -106,7 +106,7 @@
   {
     "id": 9,
     "question": "Si un inspector de tránsito te detiene, ¿qué debes hacer?",
-    "image": "assets/images/ados9.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados9.png",
     "options": [
       "A - Ignorarlo y seguir de largo",
@@ -119,7 +119,7 @@
   {
     "id": 10,
     "question": "Estás en una encrucidada con semáforo en Rojo, pero un inspector te indica que avances, ¿a quién obedeces?",
-    "image": "assets/images/ados10.png",
+    "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/ados10.png",
     "options": [
       "A - Al semáforo, pues tiene prioridad siempre",

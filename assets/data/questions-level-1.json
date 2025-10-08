@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "question": "¿Podes sacar a pasear libremente a tu mascota por la calle?",
+    "question": "¿Podes pasear libremente a tu mascota si es un poco agresiva?",
     "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "A - Si, solo si no hay nadie en la calle",
-      "B - No, debe salir con correa",
+      "B - No, nunca se la puede sacar a pasear",
       "C - Si, puede ir suelto si obedece",
       "D - No, debe salir con bozal y correa"
     ],
@@ -14,7 +14,7 @@
   },
   {
     "id": 2,
-    "question": "Si tienes menos de 12 años de edad, ¿podes ir en el asiento delantero de un automóvil?",
+    "question": "Si tienes menos de 12 años de edad, ¿podes ir en el asiento delantero del automóvil?",
     "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
@@ -32,7 +32,7 @@
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "A - Sí, con precaución si no vienen autos",
-      "B No, el único lugar es la senda peatonal",
+      "B - No, el único lugar es la senda peatonal",
       "C - Sí, siempre que te acompañe un adulto",
       "D - No, si es una avenida, pero en otras calles sí"
     ],
@@ -45,7 +45,7 @@
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "A - No, si la dejas bien ordenada y en bolsa cerrada",
-      "B - Sí, porque la basura debe depositarse en un cesto de basura",
+      "B - Sí, porque la basura debe depositarse en el cesto de basura",
       "C - No, si quién te lo pide son tus padres",
       "D - Si, si la basura está mucho tiempo afuera"
     ],
@@ -53,7 +53,7 @@
   },
   {
     "id": 5,
-    "question": "Tus padres te van a buscar al colegio en auto, ¿es correcto que te esperen estacionados en doble fila?",
+    "question": "Si tus padres te van a buscar al colegio en auto, ¿es correcto que te esperen estacionados en doble fila?",
     "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
@@ -92,16 +92,16 @@
   },
   {
     "id": 8,
-    "question": "¿Qué significa una luz amarilla intermitente en un semáforo?",
+    "question": "¿Qué significa una luz amarilla en un semáforo?",
     "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
       "A - Detenerse completamente",
       "B - Avanzar con precaución",
       "C - Acelerar para pasar rápido",
-      "D - Ignorar la señal"
+      "D - Detenerse si estimas que no alcanzas a cruzar la calle"
     ],
-    "answer": 1
+    "answer": 3
   },
   {
     "id": 9,
@@ -118,7 +118,7 @@
   },
   {
     "id": 10,
-    "question": "Si un peatón está cruzando la calle por la senda peatonal, ¿qué deben hacer los autos?",
+    "question": "Si un peatón está cruzando la calle por la senda peatonal, ¿qué deben hacer los conductores?",
     "image": "assets/images/kmal-piensa.png",
     "qr_code": "assets/images-qr/kmal-piensa.png",
     "options": [
